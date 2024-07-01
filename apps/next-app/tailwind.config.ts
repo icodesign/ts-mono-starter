@@ -1,8 +1,14 @@
 import type { Config } from "tailwindcss";
 import sharedConfig from "@repo/config-tailwind";
 
-const config: Pick<Config, "theme" | "presets"> = {
+const config: Pick<Config, "theme" | "presets" | "content"> = {
   presets: [sharedConfig],
+  content: [
+    ...sharedConfig.content,
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./node_modules/@repo/ui/**/*.tsx",
+  ],
   theme: {
     extend: {
       backgroundImage: {

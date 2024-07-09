@@ -13,9 +13,9 @@
     "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
-    "@repo/config-eslint": "^0.0.0",
-    "@repo/config-tailwind": "^0.0.0",
-    "@repo/config-typescript": "^0.0.0",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/config-tailwind": "workspace:*",
+    "@repo/config-typescript": "workspace:*",
     "@types/react": "^18",
     "@types/react-dom": "^18"
   },

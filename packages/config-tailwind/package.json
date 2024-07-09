@@ -7,7 +7,7 @@
     "./postcss": "./postcss.config.js"
   },
   "devDependencies": {
-    "@repo/config-typescript": "*",
+    "@repo/config-typescript": "workspace:*",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss": "^3.4.0",
     "autoprefixer": "^10.4.19",

@@ -7,6 +7,6 @@
       "@shadcn/*": ["src/components/shadcn/ui/*"]
     }
   },
-  "include": ["."],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

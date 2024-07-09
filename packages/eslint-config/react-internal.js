@@ -29,6 +29,8 @@ module.exports = {
   ignorePatterns: [
     // Ignore dotfiles
     ".*.js",
+    "postcss.config.js",
+    "tailwind.config.ts",
     "node_modules/",
     "dist/",
   ],

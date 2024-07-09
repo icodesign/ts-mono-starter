@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@repo/ui"],
+  // experimental: {
+  //   serverComponentsExternalPackages: ["pino", "pino-pretty", "@logtail/pino"],
+  // },
 };
 
 export default nextConfig;

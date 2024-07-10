@@ -10,6 +10,8 @@
     "allowJs": true,
     "jsx": "preserve",
     "noEmit": true,
-    "incremental": true
+    "incremental": true,
+    "declaration": false,
+    "declarationMap": false
   }
 }

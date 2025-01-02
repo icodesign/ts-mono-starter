@@ -2,6 +2,7 @@
   "name": "@repo/utils",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "exports": {
     "./*": "./src/*.ts"
   },
@@ -10,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@repo/config-typescript": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@types/node": "^20.5.4"
   },

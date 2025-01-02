@@ -1,0 +1,43 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./server": "./src/server/index.ts",
+    "./schema": "./src/shared/schema.ts",
+    "./serverless": "./src/server/serverless.ts",
+    "./cf": "./src/server/cf.ts",
+    "./serverful": "./src/server/serverful.ts",
+    "./pool": "./src/server/pool.ts"
+  },
+  "scripts": {
+    "db:push": "dotenv -- ts-node --esm src/migrate.ts | pino-pretty",
+    "db:generate": "dotenv -- drizzle-kit generate | pino-pretty"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@types/node": "^20.5.4",
+    "@types/ws": "^8.5.12",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "^0.24.0",
+    "pino-pretty": "^11.2.1",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.9.3",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@repo/utils": "workspace:*",
+    "bufferutil": "^4.0.8",
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4",
+    "uuid": "^10.0.0",
+    "ws": "^8.18.0"
+  }
+}

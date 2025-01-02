@@ -1,4 +1,4 @@
-import pino from "pino";
+import { pino } from "pino";
 import { log as nextLog } from "@logtail/next";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

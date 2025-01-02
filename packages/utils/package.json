@@ -16,7 +16,7 @@
     "@types/node": "^20.5.4"
   },
   "dependencies": {
-    "@logtail/next": "^0.1.5",
+    "@logtail/next": "^0.1.7",
     "pino": "^9.2.0"
   }
 }

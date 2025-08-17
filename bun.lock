@@ -53,7 +53,6 @@
       "name": "@workspace/database",
       "version": "1.0.0",
       "dependencies": {
-        "@neondatabase/serverless": "^0.9.3",
         "@paralleldrive/cuid2": "^2.2.2",
         "@workspace/utils": "workspace:*",
         "bufferutil": "^4.0.8",

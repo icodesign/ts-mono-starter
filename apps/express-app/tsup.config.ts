@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: ["src/index.ts"],
   format: ["cjs", "esm"],
-  noExternal: [/@repo\/.*/],
+  noExternal: [/@workspace\/.*/],
   bundle: true,
   splitting: false,
   sourcemap: true,

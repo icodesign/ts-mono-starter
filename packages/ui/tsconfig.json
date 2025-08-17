@@ -1,10 +1,10 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@workspace/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@ui/*": ["src/*"],
-      "@shadcn/*": ["src/components/shadcn/ui/*"]
+      "@workspace/ui/*": ["./src/*"],
+      "@ui/*": ["./src/*"]
     }
   },
   "include": ["src"],

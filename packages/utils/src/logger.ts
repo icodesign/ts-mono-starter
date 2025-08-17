@@ -1,5 +1,4 @@
 import { pino } from "pino";
-import { log as nextLog } from "@logtail/next";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Logger {
@@ -17,26 +16,9 @@ function createLogger(): Logger {
         level: "warn",
       });
     } else {
-      if (process.env.LOGTAIL_SOURCE_TOKEN) {
-        // next.js
-        return nextLog;
-      } else if (process.env.BETTER_STACK_NODE_SOURCE_TOKEN) {
-        // node
-        const transport = pino.transport({
-          target: "@logtail/pino",
-          options: { sourceToken: process.env.BETTER_STACK_NODE_SOURCE_TOKEN },
-        });
-        return pino(
-          {
-            level: "info",
-          },
-          transport
-        );
-      } else {
-        return pino({
-          level: "info",
-        });
-      }
+      return pino({
+        level: "info",
+      });
     }
   } else {
     if (isBrowser) {

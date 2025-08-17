@@ -1,1 +1,5 @@
-module.exports = require("@repo/config-tailwind/postcss");
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/database",
+  "name": "@workspace/database",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -20,9 +20,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/utils": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/utils": "workspace:*",
     "@types/node": "^20.5.4",
     "@types/ws": "^8.5.12",
     "dotenv-cli": "^7.3.0",
@@ -33,7 +33,7 @@
   "dependencies": {
     "@neondatabase/serverless": "^0.9.3",
     "@paralleldrive/cuid2": "^2.2.2",
-    "@repo/utils": "workspace:*",
+    "@workspace/utils": "workspace:*",
     "bufferutil": "^4.0.8",
     "drizzle-orm": "^0.33.0",
     "postgres": "^3.4.4",

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/utils",
+  "name": "@workspace/utils",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -11,12 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "@workspace/eslint-config": "workspace:*",
     "@types/node": "^20.5.4"
   },
   "dependencies": {
-    "@logtail/next": "^0.1.7",
-    "pino": "^9.2.0"
+    "pino": "^9.9.0"
   }
 }

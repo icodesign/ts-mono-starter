@@ -2,13 +2,15 @@
   "name": "example-project",
   "private": true,
   "devDependencies": {
+    "turbo": "^2.5.8",
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "packageManager": "pnpm@10.17.1"
 }

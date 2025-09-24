@@ -2,13 +2,11 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
-  noExternal: [/@workspace\/.*/],
-  bundle: true,
   splitting: false,
   sourcemap: true,
+  minify: process.env.NODE_ENV === "production" ? true : false,
+  noExternal: [/./],
+  format: ["cjs"],
+  target: "node22",
   clean: true,
-  minify: false,
-  outDir: "dist",
-  target: "node19",
 });

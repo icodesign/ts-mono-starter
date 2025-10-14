@@ -2,6 +2,7 @@
   "name": "next-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -13,7 +14,10 @@
   "dependencies": {
     "react": "^19",
     "react-dom": "^19",
-    "next": "15.4.6"
+    "next": "15.4.6",
+    "@workspace/ui": "workspace:*",
+    "@workspace/utils": "workspace:*",
+    "@workspace/database": "workspace:*"
   },
   "devDependencies": {
     "@workspace/ui": "workspace:*",

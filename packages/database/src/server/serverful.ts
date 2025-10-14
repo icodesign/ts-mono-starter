@@ -1,5 +1,4 @@
 import { schema } from "../shared/schema.js";
-export * from "drizzle-orm";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 

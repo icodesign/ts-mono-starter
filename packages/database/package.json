@@ -26,7 +26,7 @@
     "@types/node": "^20.5.4",
     "@types/ws": "^8.5.12",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.24.0",
+    "drizzle-kit": "latest",
     "pino-pretty": "^11.2.1",
     "ts-node": "^10.9.2"
   },
@@ -34,7 +34,7 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@workspace/utils": "workspace:*",
     "bufferutil": "^4.0.8",
-    "drizzle-orm": "^0.33.0",
+    "drizzle-orm": "latest",
     "postgres": "^3.4.4",
     "uuid": "^10.0.0",
     "ws": "^8.18.0"

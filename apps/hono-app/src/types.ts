@@ -1,11 +1,9 @@
 import type { Context } from "hono";
 import type { RequestIdVariables } from "hono/request-id";
-import type { JwtPayload } from "./middlewares/auth.js";
 import type { Config } from "./config.js";
 
 export type Variables = {
-  jwtPayload?: JwtPayload;
-  userId?: string;
+  // Custom payload can be added here
 } & RequestIdVariables;
 
 export type Bindings = Config;

@@ -23,7 +23,7 @@
     "@workspace/typescript-config": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/utils": "workspace:*",
-    "@types/node": "^20.5.4",
+    "@types/node": "catalog:",
     "@types/ws": "^8.5.12",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "latest",
@@ -34,7 +34,7 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@workspace/utils": "workspace:*",
     "bufferutil": "^4.0.8",
-    "drizzle-orm": "latest",
+    "drizzle-orm": "catalog:",
     "postgres": "^3.4.4",
     "uuid": "^10.0.0",
     "ws": "^8.18.0"

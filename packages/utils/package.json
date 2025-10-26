@@ -13,7 +13,7 @@
   "devDependencies": {
     "@workspace/typescript-config": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
-    "@types/node": "^20.5.4"
+    "@types/node": "catalog:"
   },
   "dependencies": {
     "pino": "^9.9.0"

@@ -1,10 +1,12 @@
 {
   "name": "hono-app",
   "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsup",
-    "start": "node dist/index.cjs"
+    "dev": "bun --hot run src/index.ts",
+    "build": "bun build --compile --minify --sourcemap ./src/index.ts --outfile dist/app",
+    "start": "./dist/app",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@hono/node-server": "^1.14.4",
@@ -15,19 +17,16 @@
     "@workspace/utils": "workspace:*",
     "@scalar/hono-api-reference": "^0.9.16",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "0.44.3",
+    "drizzle-orm": "catalog:",
     "hono": "^4.8.9",
     "hono-openapi": "^0.4.8",
     "jose": "^6.0.10",
-    "zod": "^4.0.10",
+    "zod": "catalog:",
     "zod-openapi": "^5.4.0",
     "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
-    "@workspace/typescript-config": "workspace:*",
-    "tsup": "^8.0.1",
-    "tsx": "^4.7.1",
-    "typescript": "^5"
+    "@types/node": "catalog:",
+    "@workspace/typescript-config": "workspace:*"
   }
 }

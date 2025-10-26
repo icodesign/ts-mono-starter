@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "turbo": "^2.5.8",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=22"

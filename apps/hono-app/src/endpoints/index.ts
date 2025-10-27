@@ -4,6 +4,7 @@ import { openAPISpecs } from "hono-openapi";
 import { basicAuth } from "hono/basic-auth";
 import { config } from "@/config";
 import { Scalar } from "@scalar/hono-api-reference";
+import { createV1Routes } from "./v1";
 
 export function registerEndpoints(app: Hono<AppEnv>) {
   const openApiServers = [];
@@ -62,6 +63,6 @@ export function registerEndpoints(app: Hono<AppEnv>) {
 
   app.get("/docs", Scalar({ url: "/docs/openapi" }));
 
-  // const usersRoutes = createUsersRoutes();
-  // app.route("/v3/users", usersRoutes);
+  const v1Routes = createV1Routes();
+  app.route("/v1", v1Routes);
 }

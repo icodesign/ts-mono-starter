@@ -1,8 +1,8 @@
-import type { AppEnv } from "../types.js";
+import type { AppEnv } from "@/types";
 import { Hono } from "hono";
 import { openAPISpecs } from "hono-openapi";
 import { basicAuth } from "hono/basic-auth";
-import { config } from "../config.js";
+import { config } from "@/config";
 import { Scalar } from "@scalar/hono-api-reference";
 
 export function registerEndpoints(app: Hono<AppEnv>) {

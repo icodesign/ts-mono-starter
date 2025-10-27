@@ -1,12 +1,11 @@
 import { ZodType } from "zod";
 import type { ValidationTargets } from "hono";
 import { validator as zv } from "hono-openapi/zod";
-import { fromZodError } from "zod-validation-error";
-import { ApiException } from "./exceptions.js";
+import { ApiException } from "@/exceptions";
 
 export const zValidator = <
   T extends ZodType,
-  Target extends keyof ValidationTargets,
+  Target extends keyof ValidationTargets
 >(
   target: Target,
   schema: T

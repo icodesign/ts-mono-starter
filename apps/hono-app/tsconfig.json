@@ -1,14 +1,9 @@
 {
   "extends": "@workspace/typescript-config/base.json",
-  "ts-node": { "files": true }, // https://stackoverflow.com/questions/51610583/ts-node-ignores-d-ts-files-while-tsc-successfully-compiles-the-project
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
     },
-    "outDir": "dist",
-    "target": "ESNext",
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
     "typeRoots": ["./node_modules/@types", "./src/typings"]
   },
   "include": ["./src/**/*.ts"],

@@ -6,6 +6,7 @@ const envSchema = z.object({
     .enum(["development", "production", "test"])
     .default("development"),
   PORT: z.string().default("4000"),
+  DOCS_USERNAME: z.string(),
   DOCS_PASSWORD: z.string(),
 });
 

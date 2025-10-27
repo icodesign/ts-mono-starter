@@ -1,6 +1,6 @@
 import { SQL } from "drizzle-orm";
-import { PgColumn, PgSelect } from "drizzle-orm/pg-core";
-import * as schema from "../shared/schema.js";
+import { PgColumn, type PgSelect } from "drizzle-orm/pg-core";
+import * as schema from "../shared/schema";
 import type {
   BuildQueryResult,
   DBQueryConfig,

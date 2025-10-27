@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { schema } from "../shared/schema.js";
+import { schema } from "../shared/schema";
 
 export interface Env {
   DATABASE_URL: string;

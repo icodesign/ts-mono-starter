@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
     // Remove .js from import specifiers, because
     // Next.js and webpack do not yet support

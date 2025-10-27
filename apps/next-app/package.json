@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "start": "next start",
-    "lint": "next lint",
-    "typegen": "next typegen",
+    "dev": "bun --bun run next dev",
+    "build": "bun --bun run next build",
+    "start": "bun --bun run next start",
+    "lint": "bun --bun run next lint",
+    "typegen": "bun --bun run next typegen",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {

@@ -1,44 +1,49 @@
 # syntax=docker/dockerfile:1
-ARG PROJECT="api"
-ARG TYPE="node"
-ARG NODE_VERSION="22"
+ARG PROJECT="hono-app"
+ARG TYPE="bun"
+ARG BUN_VERSION="1.3"
 
-FROM node:${NODE_VERSION}-slim AS base
+FROM oven/bun:${BUN_VERSION}-debian AS base
 ARG PROJECT
 WORKDIR /app
+RUN addgroup --system --gid 1001 app && \
+    adduser --system --uid 1001 app
 
-FROM base AS builder
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-RUN pnpm add turbo --global
+FROM base AS starter
+RUN bun install turbo --global
 
-FROM builder AS starter
+FROM starter AS installer
 COPY . .
-RUN rm -rf /app/out && turbo prune ${PROJECT} --docker
+RUN turbo prune ${PROJECT} --docker
+RUN cp /app/bunfig.toml /app/out/json/bunfig.toml
+RUN cp /app/bunfig.toml /app/out/full/bunfig.toml
+# Install dev dependencies
+RUN cd /app/out/json/ && bun install --frozen-lockfile --verbose
+# Install prod dependencies
+RUN cp /app/out/bun.lock /app/out/full/
+RUN cd /app/out/full/ && bun install --frozen-lockfile --production --verbose
 
-FROM builder AS installer
-# Install dependencies
-COPY --from=starter /app/out/json/ .
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm fetch --frozen-lockfile
-RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install --dangerously-allow-all-builds --frozen-lockfile 
-# Build project
-COPY --from=starter /app/out/full/ .
-RUN pnpm turbo run build --filter=${PROJECT}
+FROM starter AS prerelease
+COPY --from=installer /app/out/json/ .
+COPY --from=installer /app/out/full/ .
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN turbo run build --filter=${PROJECT}
 
-FROM base AS runner_node
-USER node
+FROM base AS runner_bun
+USER app
 ENV NODE_ENV=production
-COPY --from=installer --chown=node:node /app/apps/${PROJECT}/dist .
-CMD [ "node", "index.cjs"]
+COPY --from=prerelease --chown=app:app /app/apps/${PROJECT}/dist .
+CMD ["/app/app"]
 
+# To use with Next.js projects, you need to set output: 'standalone' in next.config
 FROM base AS runner_nextjs
-USER node
+USER app
 ENV NODE_ENV=production
-COPY --from=installer --chown=node:node /app/apps/${PROJECT}/.next/standalone* .
-COPY --from=installer --chown=node:node /app/apps/${PROJECT}/.next/static* ./apps/${PROJECT}/.next/static
-COPY --from=installer --chown=node:node /app/apps/${PROJECT}/public* ./apps/${PROJECT}/public
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=prerelease --chown=app:app /app/apps/${PROJECT}/.next/standalone* .
+COPY --from=prerelease --chown=app:app /app/apps/${PROJECT}/.next/static* ./apps/${PROJECT}/.next/static
+COPY --from=prerelease --chown=app:app /app/apps/${PROJECT}/public* ./apps/${PROJECT}/public
 ENV PROJECT_NAME=${PROJECT}
-CMD node /app/apps/$PROJECT_NAME/server.js
+CMD bun run /app/apps/$PROJECT_NAME/server.js
 
 FROM runner_${TYPE} AS final

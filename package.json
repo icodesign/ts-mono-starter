@@ -2,8 +2,11 @@
   "name": "example-project",
   "private": true,
   "devDependencies": {
-    "turbo": "^2.5.8",
+    "turbo": "latest",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "drizzle-orm": "catalog:"
   },
   "engines": {
     "node": ">=22"

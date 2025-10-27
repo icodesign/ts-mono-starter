@@ -24,19 +24,16 @@
     "@workspace/eslint-config": "workspace:*",
     "@workspace/utils": "workspace:*",
     "@types/node": "catalog:",
-    "@types/ws": "^8.5.12",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "latest",
+    "drizzle-kit": "0.31.5",
     "pino-pretty": "^11.2.1",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
     "@workspace/utils": "workspace:*",
-    "bufferutil": "^4.0.8",
     "drizzle-orm": "catalog:",
     "postgres": "^3.4.4",
-    "uuid": "^10.0.0",
-    "ws": "^8.18.0"
+    "uuid": "^10.0.0"
   }
 }

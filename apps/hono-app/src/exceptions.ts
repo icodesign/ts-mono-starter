@@ -19,7 +19,7 @@ export class ApiException extends HTTPException {
     this.code = code;
   }
 
-  getResponse(): Response {
+  override getResponse(): Response {
     const body = {
       code: this.code,
       message: this.message || "Internal Server Error",
@@ -34,23 +34,39 @@ export class ApiException extends HTTPException {
 }
 
 export class ServerException extends ApiException {
-  constructor({ code, message, cause }: { code?: string; message: string; cause?: unknown }) {
+  constructor({
+    code,
+    message,
+    cause,
+  }: {
+    code?: string;
+    message: string;
+    cause?: unknown;
+  }) {
     super({
       status: 500,
       message,
       code,
       cause,
-    }); 
+    });
   }
 }
 
 export class UnauthorizedException extends ApiException {
-  constructor({ code, message, cause }: { code?: string; message: string; cause?: unknown }) {
+  constructor({
+    code,
+    message,
+    cause,
+  }: {
+    code?: string;
+    message: string;
+    cause?: unknown;
+  }) {
     super({
       status: 401,
       message,
       code,
       cause,
-    }); 
+    });
   }
 }

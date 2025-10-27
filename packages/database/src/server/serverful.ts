@@ -1,6 +1,7 @@
-import { schema } from "../shared/schema.js";
+import { schema } from "../shared/schema";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import { log } from "@workspace/utils/logger";
 
 export type Database = PostgresJsDatabase<typeof schema>;
 
@@ -14,10 +15,10 @@ export class DatabaseFactory {
       return this.instance;
     }
     if (!process.env.DATABASE_URL) {
-      throw new Error("Missing DATABASE_URL");
+      log.warn("DATABASE_URL is not set in environment variables");
     }
-
-    const sql = postgres(process.env.DATABASE_URL);
+    const connectionString = process.env.DATABASE_URL || "";
+    const sql = postgres(connectionString);
 
     this.instance = drizzle(sql, {
       schema,

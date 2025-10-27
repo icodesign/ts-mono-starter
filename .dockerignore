@@ -1,6 +1,7 @@
 Dockerfile
 .dockerignore
 .git
+out
 **/.next
 **/.turbo
 **/dist

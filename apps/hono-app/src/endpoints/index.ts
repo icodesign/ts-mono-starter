@@ -8,8 +8,10 @@ import { Scalar } from "@scalar/hono-api-reference";
 export function registerEndpoints(app: Hono<AppEnv>) {
   const openApiServers = [];
   if (config.NODE_ENV === "production") {
-    if (!config.DOCS_PASSWORD || !config.DOCS_USERNAME) {
-      throw new Error("DOCS_PASSWORD is not set in production");
+    if (!config.DOCS_USERNAME || !config.DOCS_PASSWORD) {
+      throw new Error(
+        "DOCS_USERNAME or DOCS_PASSWORD is not set in production"
+      );
     }
     app.use(
       "/docs/*",

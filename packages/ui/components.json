@@ -11,10 +11,10 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@workspace/ui/components/shadcn",
-    "utils": "@workspace/ui/lib/utils",
-    "hooks": "@workspace/ui/hooks",
-    "lib": "@workspace/ui/lib",
-    "ui": "@workspace/ui/components/shadcn"
+    "components": "@ui/components/shadcn",
+    "utils": "@ui/lib/utils",
+    "hooks": "@ui/hooks",
+    "lib": "@ui/lib",
+    "ui": "@ui/components/shadcn"
   }
 }

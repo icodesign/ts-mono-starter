@@ -2,28 +2,28 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
 
-import { useIsMobile } from "@workspace/ui/hooks/use-mobile"
-import { cn } from "@workspace/ui/lib/utils"
-import { Button } from "@workspace/ui/components/shadcn/button"
-import { Input } from "@workspace/ui/components/shadcn/input"
-import { Separator } from "@workspace/ui/components/shadcn/separator"
+import { useIsMobile } from "@ui/hooks/use-mobile"
+import { cn } from "@ui/lib/utils"
+import { Button } from "@ui/components/shadcn/button"
+import { Input } from "@ui/components/shadcn/input"
+import { Separator } from "@ui/components/shadcn/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@workspace/ui/components/shadcn/sheet"
-import { Skeleton } from "@workspace/ui/components/shadcn/skeleton"
+} from "@ui/components/shadcn/sheet"
+import { Skeleton } from "@ui/components/shadcn/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@workspace/ui/components/shadcn/tooltip"
+} from "@ui/components/shadcn/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

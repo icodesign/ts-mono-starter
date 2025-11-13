@@ -4,6 +4,7 @@ import { TestComponent } from "@workspace/ui/custom/test";
 import { schema } from "@workspace/database/schema";
 import { getTableConfig } from "drizzle-orm/pg-core";
 import { DatabaseFactory } from "@workspace/database/serverful";
+import { NavigationMenuDemo } from "../components/nav-menu";
 
 export default function Home() {
   const db = DatabaseFactory.getInstance();
@@ -11,6 +12,7 @@ export default function Home() {
   const { name } = getTableConfig(schema.example);
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+      <NavigationMenuDemo />
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-2 border border-dashed border-gray-400 dark:border-gray-600 rounded-md p-4">
           <h2>Custom shared components (with tailwindcss)</h2>

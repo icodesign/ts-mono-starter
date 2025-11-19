@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["pino"],
   experimental: {
     // Remove .js from import specifiers, because
     // Next.js and webpack do not yet support

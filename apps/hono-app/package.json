@@ -9,7 +9,6 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "^1.14.4",
     "@hono/standard-validator": "^0.2.1",
     "@hono/swagger-ui": "^0.5.2",
     "@hono/zod-validator": "^0.7.2",

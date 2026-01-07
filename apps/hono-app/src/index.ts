@@ -6,7 +6,6 @@ import { trimTrailingSlash } from "hono/trailing-slash";
 import { HTTPException } from "hono/http-exception";
 import type { AppEnv } from "@/types";
 import "dotenv/config";
-import { serve } from "@hono/node-server";
 import { config } from "@/config";
 import { log } from "@workspace/utils/logger";
 
@@ -29,12 +28,7 @@ app.onError((err, c) => {
   return c.json({ code: 500, message: "Internal Server Error" }, 500);
 });
 
-serve(
-  {
-    fetch: app.fetch,
-    port: parseInt(config.PORT),
-  },
-  (info) => {
-    console.log(`Server is running on http://localhost:${info.port}`);
-  }
-);
+export default {
+  port: parseInt(config.PORT),
+  fetch: app.fetch,
+};

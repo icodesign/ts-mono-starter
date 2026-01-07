@@ -1,10 +1,10 @@
 import type { AppEnv } from "@/types";
 import { Hono } from "hono";
-import { openAPISpecs } from "hono-openapi";
 import { basicAuth } from "hono/basic-auth";
 import { config } from "@/config";
 import { Scalar } from "@scalar/hono-api-reference";
 import { createV1Routes } from "./v1";
+import { openAPIRouteHandler } from "hono-openapi";
 
 export function registerEndpoints(app: Hono<AppEnv>) {
   const openApiServers = [];
@@ -34,7 +34,7 @@ export function registerEndpoints(app: Hono<AppEnv>) {
 
   app.get(
     "/docs/openapi",
-    openAPISpecs(app, {
+    openAPIRouteHandler(app, {
       documentation: {
         components: {
           securitySchemes: {

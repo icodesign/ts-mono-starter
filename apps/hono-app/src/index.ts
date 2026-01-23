@@ -24,7 +24,7 @@ app.onError((err, c) => {
   if (err instanceof HTTPException) {
     return err.getResponse();
   }
-  log.error("Global unhandled error caught:", err);
+  log.error({ err }, "Global unhandled error caught:");
   return c.json({ code: 500, message: "Internal Server Error" }, 500);
 });
 

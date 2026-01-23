@@ -1,14 +1,6 @@
 import { pino } from "pino";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export interface Logger {
-  debug: (...args: any[]) => void;
-  info: (...args: any[]) => void;
-  warn: (...args: any[]) => void;
-  error: (...args: any[]) => void;
-}
-
-function createLogger(): Logger {
+function createLogger(): ReturnType<typeof pino> {
   const isBrowser = typeof window !== "undefined";
   if (process.env.NODE_ENV === "production") {
     if (isBrowser) {

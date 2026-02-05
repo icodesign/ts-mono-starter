@@ -6,8 +6,8 @@ ARG BUN_VERSION="1.3"
 FROM oven/bun:${BUN_VERSION}-debian AS base
 ARG PROJECT
 WORKDIR /app
-RUN addgroup --system --gid 1001 app && \
-    adduser --system --uid 1001 app
+RUN groupadd --system --gid 1001 app && \
+    useradd --system --uid 1001 --gid app app
 
 FROM base AS starter
 RUN bun install turbo --global
@@ -15,8 +15,10 @@ RUN bun install turbo --global
 FROM starter AS installer
 COPY . .
 RUN turbo prune ${PROJECT} --docker
-RUN cp /app/bunfig.toml /app/out/json/bunfig.toml
-RUN cp /app/bunfig.toml /app/out/full/bunfig.toml
+RUN if [ -f /app/bunfig.toml ]; then \
+      cp /app/bunfig.toml /app/out/json/bunfig.toml; \
+      cp /app/bunfig.toml /app/out/full/bunfig.toml; \
+    fi
 # Install dev dependencies
 RUN cd /app/out/json/ && bun install --frozen-lockfile --verbose
 # Install prod dependencies

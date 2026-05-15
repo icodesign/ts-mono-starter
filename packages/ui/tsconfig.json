@@ -1,11 +1,17 @@
 {
-  "extends": "@workspace/typescript-config/react-library.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node", "react", "react-dom"],
     "paths": {
-      "@workspace/ui/*": ["./src/*"],
-      "@ui/*": ["./src/*"]
+      "#components/community": ["./src/components/community"],
+      "#components/community/*": ["./src/components/community/*"],
+      "#components/custom": ["./src/components/custom"],
+      "#components/custom/*": ["./src/components/custom/*"],
+      "#components/*": ["./src/components/*.tsx"],
+      "#lib": ["./src/lib"],
+      "#lib/*": ["./src/lib/*.ts"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "components/**/*.tsx", "scripts/**/*.ts"]
 }

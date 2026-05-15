@@ -1,0 +1,33 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@agentrun/core": ["./module/packages/core/src/index.ts"],
+      "@agentrun/sdk": ["./module/packages/sdk-ts/src/index.ts"],
+      "@agentrun/agent-adapter-claude-code": [
+        "./module/packages/adapters/agents/claude-code/src/index.ts"
+      ],
+      "@agentrun/agent-adapter-opencode": [
+        "./module/packages/adapters/agents/opencode/src/index.ts"
+      ],
+      "@agentrun/agent-adapter-codex": ["./module/packages/adapters/agents/codex/src/index.ts"],
+      "@agentrun/agent-adapter-gemini": ["./module/packages/adapters/agents/gemini/src/index.ts"],
+      "@agentrun/sandbox-adapter-e2b": ["./module/packages/adapters/sandboxes/e2b/src/index.ts"],
+      "@agentrun/sandbox-adapter-daytona": [
+        "./module/packages/adapters/sandboxes/daytona/src/index.ts"
+      ],
+      "@agentrun/sandbox-adapter-modal": [
+        "./module/packages/adapters/sandboxes/modal/src/index.ts"
+      ],
+      "@agentrun/sandbox-adapter-vercel": [
+        "./module/packages/adapters/sandboxes/vercel/src/index.ts"
+      ],
+      "@agentrun/sandbox-adapter-upstash": [
+        "./module/packages/adapters/sandboxes/upstash/src/index.ts"
+      ],
+      "@agentrun/sandbox-adapter-docker": [
+        "./module/packages/adapters/sandboxes/docker/src/index.ts"
+      ]
+    }
+  }
+}

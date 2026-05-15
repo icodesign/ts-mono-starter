@@ -1,0 +1,10 @@
+.tanstack
+.wrangler
+dist
+node_modules
+.turbo
+.env
+.env.*
+!.env.example
+.dev.vars
+public/admin/auth

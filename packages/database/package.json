@@ -1,38 +1,28 @@
 {
-  "name": "@workspace/database",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@cozydevs/database",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    "./server": "./src/server/index.ts",
-    "./schema": "./src/shared/schema.ts",
-    "./serverless": "./src/server/serverless.ts",
-    "./cf": "./src/server/cf.ts",
-    "./serverful": "./src/server/serverful.ts",
-    "./pool": "./src/server/pool.ts"
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts"
   },
   "scripts": {
-    "db:push": "bun src/migrate.ts | pino-pretty",
-    "db:generate": "drizzle-kit generate | pino-pretty"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@workspace/typescript-config": "workspace:*",
-    "@workspace/eslint-config": "workspace:*",
-    "@workspace/utils": "workspace:*",
-    "@types/node": "catalog:",
-    "drizzle-kit": "0.31.5",
-    "pino-pretty": "^11.2.1",
-    "dotenv": "^17.2.3"
+    "build": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "user:admin": "bun scripts/set-admin.ts"
   },
   "dependencies": {
-    "@paralleldrive/cuid2": "^2.2.2",
-    "@workspace/utils": "workspace:*",
-    "drizzle-orm": "catalog:",
-    "postgres": "^3.4.4",
-    "uuid": "^10.0.0"
+    "drizzle-orm": "^0.45.1",
+    "postgres": "^3.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "drizzle-kit": "^0.31.8",
+    "typescript": "catalog:"
   }
 }

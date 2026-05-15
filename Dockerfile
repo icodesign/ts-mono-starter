@@ -20,10 +20,10 @@ RUN if [ -f /app/bunfig.toml ]; then \
       cp /app/bunfig.toml /app/out/full/bunfig.toml; \
     fi
 # Install dev dependencies
-RUN cd /app/out/json/ && bun install --frozen-lockfile --verbose
+RUN cd /app/out/json/ && bun install --frozen-lockfile
 # Install prod dependencies
 RUN cp /app/out/bun.lock /app/out/full/
-RUN cd /app/out/full/ && bun install --frozen-lockfile --production --verbose
+RUN cd /app/out/full/ && bun install --frozen-lockfile --production
 
 FROM starter AS prerelease
 COPY --from=installer /app/out/json/ .

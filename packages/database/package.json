@@ -13,8 +13,8 @@
     "./pool": "./src/server/pool.ts"
   },
   "scripts": {
-    "db:push": "dotenv -- ts-node --esm src/migrate.ts | pino-pretty",
-    "db:generate": "dotenv -- drizzle-kit generate | pino-pretty"
+    "db:push": "bun src/migrate.ts | pino-pretty",
+    "db:generate": "drizzle-kit generate | pino-pretty"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +24,9 @@
     "@workspace/eslint-config": "workspace:*",
     "@workspace/utils": "workspace:*",
     "@types/node": "catalog:",
-    "dotenv-cli": "^7.3.0",
     "drizzle-kit": "0.31.5",
     "pino-pretty": "^11.2.1",
-    "ts-node": "^10.9.2"
+    "dotenv": "^17.2.3"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",

@@ -9,7 +9,6 @@ export function createApp() {
   app.get("/api/healthz", (c) =>
     c.json({
       ok: true,
-      service: "@cozydevs/web",
     }),
   );
 

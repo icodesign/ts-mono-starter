@@ -1,8 +1,8 @@
 "use client";
 
 import { useAuth, useSignOut } from "@better-auth-ui/react";
-import { Spinner } from "@cozydevs/ui/components/community/shadcn/spinner";
-import { cn } from "@cozydevs/ui/lib/utils";
+import { Spinner } from "@workspace/ui/components/community/shadcn/spinner";
+import { cn } from "@workspace/ui/lib/utils";
 import { useEffect, useRef } from "react";
 import { toast } from "sonner";
 

@@ -1,4 +1,4 @@
-import { Button } from "@cozydevs/ui";
+import { Button } from "@workspace/ui";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SiteLogo } from "@/components/site-logo";
@@ -7,11 +7,11 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "CozyDevs UI",
+        title: "Workspace UI",
       },
       {
         name: "description",
-        content: "A shared Base UI, shadcn, Kumo, and custom component system for CozyDevs apps.",
+        content: "A shared Base UI, shadcn, Kumo, and custom component system for Workspace apps.",
       },
     ],
   }),
@@ -23,7 +23,7 @@ function Home() {
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center border-border/80 border-x px-10 py-10 sm:px-12 lg:px-14">
         <div className="space-y-14">
-          <SiteLogo href="/" aria-label="CozyDevs Logo" />
+          <SiteLogo href="/" aria-label="Workspace Logo" />
 
           <div>
             <h1 className="max-w-none font-medium text-[clamp(4.25rem,8.9vw,7.35rem)] leading-[0.9] tracking-normal">

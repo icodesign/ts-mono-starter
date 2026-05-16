@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "cozydevs",
+      "name": "workspace",
       "devDependencies": {
         "@biomejs/biome": "^2.4.15",
         "turbo": "^2.9.12",
@@ -16,8 +16,8 @@
         "@better-auth-ui/core": "^1.6.8",
         "@better-auth/drizzle-adapter": "^1.6.11",
         "@better-auth/infra": "^0.2.8",
-        "@cozydevs/database": "workspace:*",
-        "@cozydevs/ui": "workspace:*",
+        "@workspace/database": "workspace:*",
+        "@workspace/ui": "workspace:*",
         "@phosphor-icons/react": "^2.1.10",
         "@tanstack/react-query": "^5.100.10",
         "@tanstack/react-router": "^1.169.2",
@@ -43,7 +43,7 @@
       },
     },
     "packages/database": {
-      "name": "@cozydevs/database",
+      "name": "@workspace/database",
       "version": "0.0.0",
       "dependencies": {
         "drizzle-orm": "^0.45.1",
@@ -56,7 +56,7 @@
       },
     },
     "packages/ui": {
-      "name": "@cozydevs/ui",
+      "name": "@workspace/ui",
       "version": "0.0.0",
       "dependencies": {
         "@base-ui/react": "^1.4.1",
@@ -245,9 +245,9 @@
 
     "@cloudflare/workers-types": ["@cloudflare/workers-types@4.20260511.1", "http://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-4.20260511.1.tgz", {}, "sha512-FA+si7cOq9i/gtCHhIc0XJL0l1F/ApF+m00752Aj7WZFJrj3ZulT2T8/+rT3BabMT0QEnqFEGIqCgrmqhgEfMg=="],
 
-    "@cozydevs/database": ["@cozydevs/database@workspace:packages/database"],
+    "@workspace/database": ["@workspace/database@workspace:packages/database"],
 
-    "@cozydevs/ui": ["@cozydevs/ui@workspace:packages/ui"],
+    "@workspace/ui": ["@workspace/ui@workspace:packages/ui"],
 
     "@cspotcode/source-map-support": ["@cspotcode/source-map-support@0.8.1", "http://registry.npmjs.org/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz", { "dependencies": { "@jridgewell/trace-mapping": "0.3.9" } }, "sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw=="],
 

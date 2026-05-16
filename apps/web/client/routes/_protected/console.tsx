@@ -38,7 +38,7 @@ function ConsoleRoute() {
   return (
     <ConsoleShell
       user={user}
-      brand="CozyDevs"
+      brand="Workspace"
       title={getConsoleTitle(pathname)}
       navGroups={navGroups}
     >

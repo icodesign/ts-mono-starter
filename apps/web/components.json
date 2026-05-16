@@ -14,8 +14,8 @@
     "components": "@/components",
     "hooks": "@/hooks",
     "lib": "@/lib",
-    "utils": "@cozydevs/ui/lib/utils",
-    "ui": "@cozydevs/ui/components/community/shadcn"
+    "utils": "@workspace/ui/lib/utils",
+    "ui": "@workspace/ui/components/community/shadcn"
   },
   "registries": {}
 }

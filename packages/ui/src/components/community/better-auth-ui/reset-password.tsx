@@ -1,28 +1,28 @@
 "use client";
 
 import { useAuth, useResetPassword } from "@better-auth-ui/react";
-import { Button } from "@cozydevs/ui/components/community/shadcn/button";
+import { Button } from "@workspace/ui/components/community/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@cozydevs/ui/components/community/shadcn/card";
+} from "@workspace/ui/components/community/shadcn/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
-} from "@cozydevs/ui/components/community/shadcn/field";
+} from "@workspace/ui/components/community/shadcn/field";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@cozydevs/ui/components/community/shadcn/input-group";
-import { Label } from "@cozydevs/ui/components/community/shadcn/label";
-import { Spinner } from "@cozydevs/ui/components/community/shadcn/spinner";
-import { cn } from "@cozydevs/ui/lib/utils";
+} from "@workspace/ui/components/community/shadcn/input-group";
+import { Label } from "@workspace/ui/components/community/shadcn/label";
+import { Spinner } from "@workspace/ui/components/community/shadcn/spinner";
+import { cn } from "@workspace/ui/lib/utils";
 import { Eye, EyeOff } from "lucide-react";
 import { type SyntheticEvent, useEffect, useState } from "react";
 import { toast } from "sonner";

@@ -5,9 +5,9 @@ import {
   resolveInputType,
 } from "@better-auth-ui/core";
 import { useAuth } from "@better-auth-ui/react";
-import { Button } from "@cozydevs/ui/components/community/shadcn/button";
-import { Calendar } from "@cozydevs/ui/components/community/shadcn/calendar";
-import { Checkbox } from "@cozydevs/ui/components/community/shadcn/checkbox";
+import { Button } from "@workspace/ui/components/community/shadcn/button";
+import { Calendar } from "@workspace/ui/components/community/shadcn/calendar";
+import { Checkbox } from "@workspace/ui/components/community/shadcn/checkbox";
 import {
   Combobox,
   ComboboxContent,
@@ -15,37 +15,37 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@cozydevs/ui/components/community/shadcn/combobox";
+} from "@workspace/ui/components/community/shadcn/combobox";
 import {
   Field,
   FieldContent,
   FieldError,
   FieldLabel,
-} from "@cozydevs/ui/components/community/shadcn/field";
-import { Input } from "@cozydevs/ui/components/community/shadcn/input";
+} from "@workspace/ui/components/community/shadcn/field";
+import { Input } from "@workspace/ui/components/community/shadcn/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@cozydevs/ui/components/community/shadcn/input-group";
-import { Label } from "@cozydevs/ui/components/community/shadcn/label";
+} from "@workspace/ui/components/community/shadcn/input-group";
+import { Label } from "@workspace/ui/components/community/shadcn/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@cozydevs/ui/components/community/shadcn/popover";
+} from "@workspace/ui/components/community/shadcn/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@cozydevs/ui/components/community/shadcn/select";
-import { Slider } from "@cozydevs/ui/components/community/shadcn/slider";
-import { Switch } from "@cozydevs/ui/components/community/shadcn/switch";
-import { Textarea } from "@cozydevs/ui/components/community/shadcn/textarea";
-import { cn } from "@cozydevs/ui/lib/utils";
+} from "@workspace/ui/components/community/shadcn/select";
+import { Slider } from "@workspace/ui/components/community/shadcn/slider";
+import { Switch } from "@workspace/ui/components/community/shadcn/switch";
+import { Textarea } from "@workspace/ui/components/community/shadcn/textarea";
+import { cn } from "@workspace/ui/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon, Check, ChevronDownIcon, Copy } from "lucide-react";
 import { useRef, useState } from "react";

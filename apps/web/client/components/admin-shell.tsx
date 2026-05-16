@@ -1,4 +1,4 @@
-import { KumoButton } from "@cozydevs/ui";
+import { KumoButton } from "@workspace/ui";
 import { GearSixIcon, HouseIcon, ShieldCheckIcon, UsersThreeIcon } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
 
@@ -36,7 +36,7 @@ export function AdminShell({ user, title, action, children }: AdminShellProps) {
   return (
     <ConsoleShell
       user={user}
-      brand="CozyDevs Admin"
+      brand="Workspace Admin"
       title={title}
       navGroups={navGroups}
       statusLabel="admin"

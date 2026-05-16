@@ -1,14 +1,14 @@
-# @cozydevs/ui
+# @workspace/ui
 
-Shared React UI package for CozyDevs apps.
+Shared React UI package for Workspace apps.
 
 ## Design
 
 This package should be source-first and small at the public boundary. Apps import CSS tokens once and then consume stable components from package exports.
 
 ```tsx
-import "@cozydevs/ui/globals.css";
-import { Button } from "@cozydevs/ui";
+import "@workspace/ui/globals.css";
+import { Button } from "@workspace/ui";
 ```
 
 The package uses Base UI as the default primitive dependency, not as a source
@@ -16,7 +16,7 @@ directory. Components are organized by ownership:
 
 - `src/components/community/shadcn`: shadcn registry components configured to use the Base UI-backed registry.
 - `src/components/community/kumo`: Kumo components adapted behind our UI package exports.
-- `src/components/custom`: CozyDevs-owned components. Custom Base UI wrappers live here too.
+- `src/components/custom`: Workspace-owned components. Custom Base UI wrappers live here too.
 - `src/styles`: Tailwind v4 entrypoint, CSS variables, and design tokens.
 - `src/lib`: framework-neutral helpers.
 
@@ -27,7 +27,7 @@ Prefer Base UI for custom interactive components when the API is mature enough f
 The first custom Base UI wrapper is `Switch`:
 
 ```tsx
-import { Switch } from "@cozydevs/ui";
+import { Switch } from "@workspace/ui";
 
 <Switch defaultChecked aria-label="Enable notifications" />;
 ```
@@ -36,7 +36,7 @@ Use community components when they save real implementation time, but keep them 
 
 Use community components as source material, not as permanent public API. A shadcn CLI install lands in `components/community/shadcn` by default. Move code to `custom` only after we own the accessibility, keyboard behavior, and responsive states.
 
-Put CozyDevs-owned product components directly in `custom`.
+Put Workspace-owned product components directly in `custom`.
 
 ## CLI
 

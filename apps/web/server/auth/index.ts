@@ -1,6 +1,6 @@
 import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { dash } from "@better-auth/infra";
-import { createDatabase, createMockDatabase, schema } from "@cozydevs/database";
+import { createDatabase, createMockDatabase, schema } from "@workspace/database";
 import { betterAuth } from "better-auth";
 import { admin } from "better-auth/plugins";
 import { type CloudflareGeolocation, withCloudflare } from "better-auth-cloudflare";
@@ -29,7 +29,7 @@ export function createAuth(options: CreateAuthOptions = {}) {
       : {};
 
   return betterAuth({
-    appName: "CozyDevs",
+    appName: "Workspace",
     basePath: "/api/auth",
     baseURL: options.baseURL ?? config.betterAuth.url,
     secret: config.betterAuth.secret,
@@ -80,7 +80,7 @@ function createCliConfig() {
 
   return {
     betterAuth: {
-      secret: env.BETTER_AUTH_SECRET ?? "cozydevs-local-development-secret-32",
+      secret: env.BETTER_AUTH_SECRET ?? "workspace-local-development-secret-32",
       url: env.BETTER_AUTH_URL ?? "http://localhost:8787",
       trustedOrigins: splitCsv(env.BETTER_AUTH_TRUSTED_ORIGINS),
       infraApiKey: env.BETTER_AUTH_API_KEY,

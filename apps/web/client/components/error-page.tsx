@@ -17,7 +17,7 @@ export function ErrorPage({ code, title, description, action }: ErrorPageProps) 
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center border-border/80 border-x px-10 py-10 sm:px-12 lg:px-14">
         <div className="space-y-14">
-          <SiteLogo href="/" aria-label="CozyDevs Logo" />
+          <SiteLogo href="/" aria-label="Workspace Logo" />
 
           <div>
             <p className="mb-5 font-semibold text-lime-500 text-sm uppercase tracking-[0.18em]">

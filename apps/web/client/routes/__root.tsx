@@ -6,7 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import "@cozydevs/ui/globals.css";
+import "@workspace/ui/globals.css";
 import { ErrorPage } from "@/components/error-page";
 import { Providers } from "@/components/providers";
 
@@ -19,7 +19,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "CozyDevs",
+        title: "Workspace",
       },
     ],
   }),

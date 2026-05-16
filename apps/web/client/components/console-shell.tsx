@@ -5,7 +5,7 @@ import {
   KumoBreadcrumbs,
   KumoDropdownMenu,
   KumoSidebar,
-} from "@cozydevs/ui";
+} from "@workspace/ui";
 import { GearSixIcon } from "@phosphor-icons/react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import type { ComponentType, ReactNode } from "react";
@@ -81,7 +81,7 @@ export function ConsoleShell({
           <Link
             to="/"
             className="grid w-full min-w-0 grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-2.5 overflow-hidden pl-0.5 font-bold text-kumo-default"
-            aria-label="CozyDevs home"
+            aria-label="Workspace home"
           >
             <span className="inline-grid size-7 place-items-center justify-self-center rounded-lg border border-kumo-fill bg-kumo-base font-bold text-[0.8rem] text-kumo-link shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               C

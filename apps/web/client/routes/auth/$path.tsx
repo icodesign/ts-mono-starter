@@ -1,5 +1,5 @@
 import { viewPaths } from "@better-auth-ui/core";
-import { Auth } from "@cozydevs/ui/components/community/better-auth-ui/auth";
+import { Auth } from "@workspace/ui/components/community/better-auth-ui/auth";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { SiteLogo } from "@/components/site-logo";
@@ -19,7 +19,7 @@ function AuthPage() {
   return (
     <main className="flex min-h-screen bg-background text-foreground">
       <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col border-border/80 border-x px-5 py-6 sm:px-8 lg:px-10">
-        <SiteLogo href="/" aria-label="CozyDevs Logo" />
+        <SiteLogo href="/" aria-label="Workspace Logo" />
         <div className="flex flex-1 items-center justify-center py-8">
           <Auth path={path} />
         </div>

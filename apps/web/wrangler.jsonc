@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "cozydevs-web",
+  "name": "workspace-web",
   "main": "server/index.ts",
   "compatibility_date": "2026-05-14",
   "compatibility_flags": ["nodejs_compat"],
@@ -8,7 +8,7 @@
     {
       "binding": "HYPERDRIVE",
       "id": "00000000-0000-0000-0000-000000000000",
-      "localConnectionString": "postgres://cozydevs:cozydevs@127.0.0.1:54322/cozydevs"
+      "localConnectionString": "postgres://workspace:workspace@127.0.0.1:54322/workspace"
     }
   ],
   "observability": {

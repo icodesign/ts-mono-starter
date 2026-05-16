@@ -2,30 +2,30 @@
 
 import { authMutationKeys, parseAdditionalFieldValue } from "@better-auth-ui/core";
 import { useAuth, useFetchOptions, useSignUpEmail } from "@better-auth-ui/react";
-import { Button } from "@cozydevs/ui/components/community/shadcn/button";
+import { Button } from "@workspace/ui/components/community/shadcn/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@cozydevs/ui/components/community/shadcn/card";
+} from "@workspace/ui/components/community/shadcn/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldSeparator,
-} from "@cozydevs/ui/components/community/shadcn/field";
-import { Input } from "@cozydevs/ui/components/community/shadcn/input";
+} from "@workspace/ui/components/community/shadcn/field";
+import { Input } from "@workspace/ui/components/community/shadcn/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@cozydevs/ui/components/community/shadcn/input-group";
-import { Label } from "@cozydevs/ui/components/community/shadcn/label";
-import { Spinner } from "@cozydevs/ui/components/community/shadcn/spinner";
-import { cn } from "@cozydevs/ui/lib/utils";
+} from "@workspace/ui/components/community/shadcn/input-group";
+import { Label } from "@workspace/ui/components/community/shadcn/label";
+import { Spinner } from "@workspace/ui/components/community/shadcn/spinner";
+import { cn } from "@workspace/ui/lib/utils";
 import { useIsMutating } from "@tanstack/react-query";
 import { Eye, EyeOff } from "lucide-react";
 import { type ComponentType, type ReactNode, type SyntheticEvent, useState } from "react";

@@ -1,21 +1,21 @@
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: cozydevs-dev-postgres
+    container_name: workspace-dev-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: cozydevs
-      POSTGRES_USER: cozydevs
-      POSTGRES_PASSWORD: cozydevs
+      POSTGRES_DB: workspace
+      POSTGRES_USER: workspace
+      POSTGRES_PASSWORD: workspace
     ports:
       - "54322:5432"
     volumes:
-      - cozydevs-dev-postgres-data:/var/lib/postgresql/data
+      - workspace-dev-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U cozydevs -d cozydevs"]
+      test: ["CMD-SHELL", "pg_isready -U workspace -d workspace"]
       interval: 5s
       timeout: 5s
       retries: 10
 
 volumes:
-  cozydevs-dev-postgres-data:
+  workspace-dev-postgres-data:

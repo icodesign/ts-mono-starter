@@ -12,7 +12,7 @@ export function createStudioConfig(): StudioConfig {
     }),
     basePath: "/admin/auth",
     metadata: {
-      title: "CozyDevs Auth Studio",
+      title: "Workspace Auth Studio",
       theme: "dark",
     },
     access: {

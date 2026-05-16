@@ -1,5 +1,5 @@
-import { KumoBadge, KumoButton, KumoLayerCard } from "@cozydevs/ui";
 import { createFileRoute } from "@tanstack/react-router";
+import { KumoBadge, KumoButton, KumoLayerCard } from "@workspace/ui";
 
 import { AdminShell } from "@/components/admin-shell";
 import { Route as AdminRoute } from "../../_admin";

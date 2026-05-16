@@ -1,3 +1,4 @@
+import { createFileRoute } from "@tanstack/react-router";
 import {
   Button,
   KumoBadge,
@@ -6,8 +7,7 @@ import {
   KumoLayerCard,
   StatusPill,
   Switch,
-} from "@cozydevs/ui";
-import { createFileRoute } from "@tanstack/react-router";
+} from "@workspace/ui";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
@@ -59,7 +59,7 @@ function ComponentsDebugRoute() {
                   <div>
                     <p className="font-medium text-sm">Kumo package import</p>
                     <p className="text-muted-foreground text-xs">
-                      Components from @cloudflare/kumo through @cozydevs/ui.
+                      Components from @cloudflare/kumo through @workspace/ui.
                     </p>
                   </div>
                   <KumoBadge variant="success">ready</KumoBadge>

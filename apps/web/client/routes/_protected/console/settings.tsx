@@ -1,5 +1,5 @@
-import { KumoBadge, KumoButton, KumoLayerCard } from "@cozydevs/ui";
 import { createFileRoute } from "@tanstack/react-router";
+import { KumoBadge, KumoButton, KumoLayerCard } from "@workspace/ui";
 
 export const Route = createFileRoute("/_protected/console/settings")({
   component: ConsoleSettingsRoute,

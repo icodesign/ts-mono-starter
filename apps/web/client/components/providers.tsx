@@ -1,7 +1,7 @@
-import { AuthProvider } from "@cozydevs/ui/components/community/better-auth-ui/auth-provider";
-import { Toaster } from "@cozydevs/ui/components/community/shadcn/sonner";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { AuthProvider } from "@workspace/ui/components/community/better-auth-ui/auth-provider";
+import { Toaster } from "@workspace/ui/components/community/shadcn/sonner";
 import { ThemeProvider } from "next-themes";
 import type { ComponentProps, ReactNode } from "react";
 import { authClient } from "@/lib/auth-client";

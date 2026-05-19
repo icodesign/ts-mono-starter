@@ -45,6 +45,9 @@ export function createAuth(options: CreateAuthOptions = {}) {
         emailAndPassword: {
           enabled: true,
         },
+        advanced: {
+          cookiePrefix: "changeme",
+        },
         plugins: [
           admin(),
           ...(config.betterAuth.infraApiKey

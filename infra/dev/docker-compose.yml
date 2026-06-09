@@ -2,21 +2,21 @@ name: changeme
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: workspace-dev-postgres
+    container_name: changeme-dev-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: workspace
-      POSTGRES_USER: workspace
-      POSTGRES_PASSWORD: workspace
+      POSTGRES_DB: changeme
+      POSTGRES_USER: changeme
+      POSTGRES_PASSWORD: changeme
     ports:
       - "54322:5432"
     volumes:
-      - workspace-dev-postgres-data:/var/lib/postgresql/data
+      - changeme-dev-postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U workspace -d workspace"]
+      test: ["CMD-SHELL", "pg_isready -U changeme -d changeme"]
       interval: 5s
       timeout: 5s
       retries: 10
 
 volumes:
-  workspace-dev-postgres-data:
+  changeme-dev-postgres-data:

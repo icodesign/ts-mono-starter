@@ -29,7 +29,8 @@
     "hono": "^4.10.7",
     "next-themes": "^0.4.6",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "drizzle-orm": "catalog:"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.0",

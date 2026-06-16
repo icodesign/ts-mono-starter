@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.45.1",
-    "postgres": "^3.4.9"
+    "pg": "^8.21.0"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@types/pg": "^8.20.0",
     "drizzle-kit": "^0.31.8",
     "typescript": "catalog:"
   }

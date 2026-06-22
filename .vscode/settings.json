@@ -1,35 +1,20 @@
 {
-  "biome.enabled": true,
-  "biome.requireConfiguration": true,
-  "biome.configurationPath": "biome.json",
-  "biome.lsp.bin": "./node_modules/.bin/biome",
   "eslint.enable": false,
   "prettier.enable": false,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit",
-    "source.fixAll.eslint": "never"
+    "source.fixAll.oxc": "explicit",
+    "source.organizeImports.oxc": "explicit",
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
   "search.exclude": {
     "**/.agents": true
-  }
+  },
+  "oxc.fmt.configPath": "./vite.config.ts",
+  "editor.formatOnSaveMode": "file",
+  "npm.scriptRunner": "vp"
 }

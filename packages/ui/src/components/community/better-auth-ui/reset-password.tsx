@@ -99,7 +99,7 @@ export function ResetPassword({ className }: ResetPasswordProps) {
   return (
     <Card className={cn("w-full max-w-sm", className)}>
       <CardHeader>
-        <CardTitle className="font-semibold text-xl">{localization.auth.resetPassword}</CardTitle>
+        <CardTitle className="text-xl font-semibold">{localization.auth.resetPassword}</CardTitle>
       </CardHeader>
 
       <CardContent>

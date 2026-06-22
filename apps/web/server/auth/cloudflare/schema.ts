@@ -1,4 +1,5 @@
 import type { BetterAuthPluginDBSchema, DBFieldAttribute } from "better-auth/db";
+
 import type { CloudflarePluginOptions } from "./types";
 
 /**

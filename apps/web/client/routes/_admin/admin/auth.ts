@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import { betterAuthStudioCloudflare } from "../../../../server/auth/studio-adapter";
 import { createStudioConfig } from "../../../../studio.config";
 

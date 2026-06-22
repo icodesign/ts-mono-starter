@@ -8,11 +8,11 @@
     {
       "binding": "HYPERDRIVE",
       "id": "00000000-0000-0000-0000-000000000000",
-      "localConnectionString": "postgres://changeme:changeme@127.0.0.1:54322/changeme"
-    }
+      "localConnectionString": "postgres://changeme:changeme@127.0.0.1:54322/changeme",
+    },
   ],
   "observability": {
     "enabled": true,
-    "head_sampling_rate": 1
-  }
+    "head_sampling_rate": 1,
+  },
 }

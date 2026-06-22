@@ -12,10 +12,10 @@ function ConsoleSettingsRoute() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <KumoBadge variant="secondary">settings</KumoBadge>
-            <h2 className="m-0 mt-4 font-semibold text-2xl text-kumo-default tracking-normal">
+            <h2 className="text-kumo-default m-0 mt-4 text-2xl font-semibold tracking-normal">
               Workspace settings
             </h2>
-            <p className="m-0 mt-2 max-w-2xl text-kumo-subtle text-sm leading-6">
+            <p className="text-kumo-subtle m-0 mt-2 max-w-2xl text-sm leading-6">
               Manage the defaults used by console workflows and team-facing tools.
             </p>
           </div>
@@ -31,8 +31,8 @@ function ConsoleSettingsRoute() {
           ["Invite permissions", "Admins only"],
         ].map(([label, value]) => (
           <KumoLayerCard key={label} className="rounded-xl p-4">
-            <p className="m-0 font-medium text-kumo-default text-sm">{label}</p>
-            <p className="m-0 mt-2 text-kumo-subtle text-sm">{value}</p>
+            <p className="text-kumo-default m-0 text-sm font-medium">{label}</p>
+            <p className="text-kumo-subtle m-0 mt-2 text-sm">{value}</p>
           </KumoLayerCard>
         ))}
       </div>

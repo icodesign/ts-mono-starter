@@ -528,7 +528,7 @@ function DateInput({ name, field, isPending }: AdditionalFieldProps) {
               value={time}
               onChange={(e) => setTime(e.target.value)}
               disabled={isPending || field.readOnly}
-              className="appearance-none bg-background [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+              className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
             />
           </Field>
         )}

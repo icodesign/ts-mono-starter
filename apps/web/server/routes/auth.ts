@@ -1,6 +1,7 @@
 import type { CloudflareGeolocation } from "better-auth-cloudflare";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+
 import { createAuth } from "../auth";
 import { createConfig } from "../config/create-config";
 import type { ApiEnv } from "../types";

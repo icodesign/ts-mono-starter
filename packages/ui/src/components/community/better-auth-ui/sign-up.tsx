@@ -2,6 +2,7 @@
 
 import { authMutationKeys, parseAdditionalFieldValue } from "@better-auth-ui/core";
 import { useAuth, useFetchOptions, useSignUpEmail } from "@better-auth-ui/react";
+import { useIsMutating } from "@tanstack/react-query";
 import { Button } from "@workspace/ui/components/community/shadcn/button";
 import {
   Card,
@@ -26,10 +27,10 @@ import {
 import { Label } from "@workspace/ui/components/community/shadcn/label";
 import { Spinner } from "@workspace/ui/components/community/shadcn/spinner";
 import { cn } from "@workspace/ui/lib/utils";
-import { useIsMutating } from "@tanstack/react-query";
 import { Eye, EyeOff } from "lucide-react";
 import { type ComponentType, type ReactNode, type SyntheticEvent, useState } from "react";
 import { toast } from "sonner";
+
 import { AdditionalField } from "./additional-field";
 import { ProviderButtons, type SocialLayout } from "./provider-buttons";
 
@@ -159,7 +160,7 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
   return (
     <Card className={cn("w-full max-w-sm", className)}>
       <CardHeader>
-        <CardTitle className="font-semibold text-xl">{localization.auth.signUp}</CardTitle>
+        <CardTitle className="text-xl font-semibold">{localization.auth.signUp}</CardTitle>
       </CardHeader>
 
       <CardContent>
@@ -171,7 +172,7 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
               )}
 
               {showSeparator && (
-                <FieldSeparator className="flex items-center text-xs *:data-[slot=field-separator-content]:bg-card">
+                <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card flex items-center text-xs">
                   {localization.auth.or}
                 </FieldSeparator>
               )}
@@ -409,7 +410,7 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
           {socialPosition === "bottom" && (
             <>
               {showSeparator && (
-                <FieldSeparator className="flex items-center text-xs *:data-[slot=field-separator-content]:bg-card">
+                <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card flex items-center text-xs">
                   {localization.auth.or}
                 </FieldSeparator>
               )}

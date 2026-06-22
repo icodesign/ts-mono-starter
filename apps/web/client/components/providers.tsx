@@ -4,6 +4,7 @@ import { AuthProvider } from "@workspace/ui/components/community/better-auth-ui/
 import { Toaster } from "@workspace/ui/components/community/shadcn/sonner";
 import { ThemeProvider } from "next-themes";
 import type { ComponentProps, ReactNode } from "react";
+
 import { authClient } from "@/lib/auth-client";
 import { getQueryClient } from "@/lib/query-client";
 

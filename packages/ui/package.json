@@ -52,14 +52,14 @@
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0"
   },
+  "devDependencies": {
+    "@types/node": "catalog:build",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:build"
+  },
   "peerDependencies": {
     "react": "catalog:",
     "react-dom": "catalog:"
-  },
-  "devDependencies": {
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "typescript": "catalog:"
   }
 }

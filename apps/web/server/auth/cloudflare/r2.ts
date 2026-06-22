@@ -3,6 +3,7 @@ import { createAuthEndpoint, getSessionFromCtx, sessionMiddleware } from "better
 import type { DBFieldAttribute } from "better-auth/db";
 import mime from "mime/lite";
 import { type ZodType, z } from "zod";
+
 import type { FileMetadata, R2Config } from "./types";
 
 export const R2_ERROR_CODES = {
@@ -108,6 +109,7 @@ function convertFieldAttributesToZodSchema(additionalFields: Record<string, DBFi
     } else if (value.type === "number[]") {
       fieldSchema = z.array(z.number());
     } else {
+      // oxlint-disable-next-line typescript/restrict-template-expressions
       throw new Error(`Unsupported field type: ${value.type} for field ${key}`);
     }
 
@@ -170,6 +172,7 @@ export const createUploadFileSchema = (additionalFields?: Record<string, DBField
     } else if (value.type === "number[]") {
       fieldSchema = z.array(z.number());
     } else {
+      // oxlint-disable-next-line typescript/restrict-template-expressions
       throw new Error(`Unsupported field type: ${value.type} for field ${key}`);
     }
 

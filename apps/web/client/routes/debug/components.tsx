@@ -19,12 +19,12 @@ function ComponentsDebugRoute() {
   const [enabled, setEnabled] = useState(true);
 
   return (
-    <main className="min-h-screen bg-background p-8 text-foreground">
+    <main className="bg-background text-foreground min-h-screen p-8">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <header className="space-y-2">
           <StatusPill tone="neutral">debug/components</StatusPill>
-          <h1 className="font-semibold text-3xl tracking-normal">Component Imports</h1>
-          <p className="max-w-2xl text-muted-foreground text-sm">
+          <h1 className="text-3xl font-semibold tracking-normal">Component Imports</h1>
+          <p className="text-muted-foreground max-w-2xl text-sm">
             Smoke route for validating shared UI package imports across custom Base UI wrappers,
             shadcn Base UI components, and Kumo community components.
           </p>
@@ -57,7 +57,7 @@ function ComponentsDebugRoute() {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="font-medium text-sm">Kumo package import</p>
+                    <p className="text-sm font-medium">Kumo package import</p>
                     <p className="text-muted-foreground text-xs">
                       Components from @cloudflare/kumo through @workspace/ui.
                     </p>
@@ -85,8 +85,8 @@ function ComponentsDebugRoute() {
 
 function DebugPanel({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="rounded-lg border bg-card p-4 shadow-xs">
-      <h2 className="mb-4 font-medium text-sm">{title}</h2>
+    <section className="bg-card rounded-lg border p-4 shadow-xs">
+      <h2 className="mb-4 text-sm font-medium">{title}</h2>
       {children}
     </section>
   );

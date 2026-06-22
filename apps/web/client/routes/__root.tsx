@@ -6,6 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+
 import "@workspace/ui/globals.css";
 import { ErrorPage } from "@/components/error-page";
 import { Providers } from "@/components/providers";

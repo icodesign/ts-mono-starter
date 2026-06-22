@@ -1,3 +1,5 @@
+import { GearSixIcon } from "@phosphor-icons/react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   cn,
   KumoBadge,
@@ -6,8 +8,6 @@ import {
   KumoDropdownMenu,
   KumoSidebar,
 } from "@workspace/ui";
-import { GearSixIcon } from "@phosphor-icons/react";
-import { Link, useRouterState } from "@tanstack/react-router";
 import type { ComponentType, ReactNode } from "react";
 
 export type ShellUser = {
@@ -80,10 +80,10 @@ export function ConsoleShell({
         <KumoSidebar.Header>
           <Link
             to="/"
-            className="grid w-full min-w-0 grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-2.5 overflow-hidden pl-0.5 font-bold text-kumo-default"
+            className="text-kumo-default grid w-full min-w-0 grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-2.5 overflow-hidden pl-0.5 font-bold"
             aria-label="Workspace home"
           >
-            <span className="inline-grid size-7 place-items-center justify-self-center rounded-lg border border-kumo-fill bg-kumo-base font-bold text-[0.8rem] text-kumo-link shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+            <span className="border-kumo-fill bg-kumo-base text-kumo-link inline-grid size-7 place-items-center justify-self-center rounded-lg border text-[0.8rem] font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               C
             </span>
             <span
@@ -96,7 +96,6 @@ export function ConsoleShell({
         </KumoSidebar.Header>
 
         <KumoSidebar.Content>
-          <KumoSidebar.Input placeholder="Quick search..." shortcut="⌘K" />
           {navGroups.map((group) => (
             <KumoSidebar.Group key={group.label}>
               <KumoSidebar.GroupLabel>{group.label}</KumoSidebar.GroupLabel>
@@ -129,7 +128,7 @@ export function ConsoleShell({
                   <button
                     data-shell-footer-settings
                     type="button"
-                    className="group/menu-button flex min-h-[34px] w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 font-medium text-kumo-default text-sm transition-[color,background-color,padding] duration-0 hover:bg-kumo-tint focus-visible:ring-2 focus-visible:ring-kumo-brand group-data-[state=collapsed]/sidebar:px-2 [&>svg]:text-kumo-subtle"
+                    className="group/menu-button text-kumo-default hover:bg-kumo-tint focus-visible:ring-kumo-brand [&>svg]:text-kumo-subtle flex min-h-[34px] w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-[color,background-color,padding] duration-0 group-data-[state=collapsed]/sidebar:px-2 focus-visible:ring-2"
                   >
                     <GearSixIcon className="size-4" />
                     <span data-shell-footer-settings-text>Settings</span>
@@ -140,10 +139,10 @@ export function ConsoleShell({
                 <KumoDropdownMenu.Group>
                   <KumoDropdownMenu.Label>Signed in as</KumoDropdownMenu.Label>
                   <div className="px-2 py-1.5">
-                    <p className="m-0 truncate font-medium text-kumo-default text-sm">
+                    <p className="text-kumo-default m-0 truncate text-sm font-medium">
                       {user.name}
                     </p>
-                    <p className="m-0 mt-1 truncate text-kumo-subtle text-xs">{user.email}</p>
+                    <p className="text-kumo-subtle m-0 mt-1 truncate text-xs">{user.email}</p>
                     <KumoBadge
                       variant={user.role === "admin" ? "success" : "secondary"}
                       className="mt-3"
@@ -157,7 +156,7 @@ export function ConsoleShell({
             <KumoSidebar.Trigger
               data-shell-footer-toggle
               aria-label="Toggle sidebar"
-              className="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1.5 text-kumo-subtle transition-colors duration-150 hover:bg-kumo-tint hover:text-kumo-default focus-visible:outline focus-visible:outline-1 focus-visible:outline-kumo-focus focus-visible:outline-offset-2 [&>svg]:size-4"
+              className="text-kumo-subtle hover:bg-kumo-tint hover:text-kumo-default focus-visible:outline-kumo-focus inline-flex shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1.5 transition-colors duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 [&>svg]:size-4"
             />
           </div>
         </KumoSidebar.Footer>
@@ -165,11 +164,11 @@ export function ConsoleShell({
       </KumoSidebar>
 
       <main className="flex h-dvh min-w-0 flex-1 flex-col overflow-hidden">
-        <header className="z-20 flex min-h-18 shrink-0 items-center justify-between gap-4 border-kumo-fill border-b bg-kumo-canvas/90 px-5 py-3.5 backdrop-blur-md">
+        <header className="border-kumo-fill bg-kumo-canvas/90 z-20 flex min-h-18 shrink-0 items-center justify-between gap-4 border-b px-5 py-3.5 backdrop-blur-md">
           <div className="flex min-w-0 items-center gap-3">
             <KumoSidebar.Trigger
               aria-label="Open sidebar"
-              className="hidden shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1.5 text-kumo-subtle transition-colors duration-150 hover:bg-kumo-tint hover:text-kumo-default focus-visible:outline focus-visible:outline-1 focus-visible:outline-kumo-focus focus-visible:outline-offset-2 max-[767px]:inline-flex [&>svg]:size-4"
+              className="text-kumo-subtle hover:bg-kumo-tint hover:text-kumo-default focus-visible:outline-kumo-focus hidden shrink-0 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1.5 transition-colors duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 max-[767px]:inline-flex [&>svg]:size-4"
             />
             <div className="min-w-0">
               <KumoBreadcrumbs size="sm" className="min-w-0">

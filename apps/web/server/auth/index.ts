@@ -3,8 +3,9 @@ import { dash } from "@better-auth/infra";
 import { createDatabase, createMockDatabase, schema } from "@workspace/database";
 import { betterAuth } from "better-auth";
 import { admin } from "better-auth/plugins";
-import { type CloudflareGeolocation, withCloudflare } from "better-auth-cloudflare";
+
 import { type ConfigEnv, createConfig } from "../config/create-config";
+import { withCloudflare, type CloudflareGeolocation } from "./cloudflare";
 
 type CreateAuthOptions = {
   env?: Env & ConfigEnv;

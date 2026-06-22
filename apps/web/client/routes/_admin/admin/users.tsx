@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { KumoBadge, KumoButton, KumoLayerCard } from "@workspace/ui";
 
 import { AdminShell } from "@/components/admin-shell";
+
 import { Route as AdminRoute } from "../../_admin";
 
 export const Route = createFileRoute("/_admin/admin/users")({
@@ -31,20 +32,20 @@ function AdminUsersRoute() {
         <KumoLayerCard className="overflow-hidden rounded-xl p-0">
           <div className="border-kumo-fill border-b p-4">
             <KumoBadge variant="secondary">directory</KumoBadge>
-            <h2 className="m-0 mt-4 font-semibold text-2xl text-kumo-default tracking-normal">
+            <h2 className="text-kumo-default m-0 mt-4 text-2xl font-semibold tracking-normal">
               User access
             </h2>
-            <p className="m-0 mt-2 max-w-2xl text-kumo-subtle text-sm leading-6">
+            <p className="text-kumo-subtle m-0 mt-2 max-w-2xl text-sm leading-6">
               Manage who can use protected workspaces and who can enter admin-only surfaces.
             </p>
           </div>
 
-          <div className="divide-y divide-kumo-fill">
+          <div className="divide-kumo-fill divide-y">
             {users.map(([name, email, role]) => (
               <div key={email} className="flex items-center justify-between gap-4 p-5">
                 <div className="min-w-0">
-                  <p className="m-0 font-medium text-kumo-default text-sm">{name}</p>
-                  <p className="m-0 mt-1 truncate text-kumo-subtle text-sm">{email}</p>
+                  <p className="text-kumo-default m-0 text-sm font-medium">{name}</p>
+                  <p className="text-kumo-subtle m-0 mt-1 truncate text-sm">{email}</p>
                 </div>
                 <KumoBadge variant={role === "admin" ? "success" : "secondary"}>{role}</KumoBadge>
               </div>

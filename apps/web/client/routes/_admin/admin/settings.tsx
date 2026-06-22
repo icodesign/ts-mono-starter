@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { KumoBadge, KumoButton, KumoLayerCard } from "@workspace/ui";
 
 import { AdminShell } from "@/components/admin-shell";
+
 import { Route as AdminRoute } from "../../_admin";
 
 export const Route = createFileRoute("/_admin/admin/settings")({
@@ -24,10 +25,10 @@ function AdminSettingsRoute() {
       <section className="flex h-full min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain p-4 pb-8 max-sm:p-3 [&>*]:shrink-0">
         <KumoLayerCard className="rounded-xl p-4">
           <KumoBadge variant="secondary">policy</KumoBadge>
-          <h2 className="m-0 mt-4 font-semibold text-2xl text-kumo-default tracking-normal">
+          <h2 className="text-kumo-default m-0 mt-4 text-2xl font-semibold tracking-normal">
             Admin settings
           </h2>
-          <p className="m-0 mt-2 max-w-2xl text-kumo-subtle text-sm leading-6">
+          <p className="text-kumo-subtle m-0 mt-2 max-w-2xl text-sm leading-6">
             Configure access rules and operational defaults for admin-only workflows.
           </p>
         </KumoLayerCard>
@@ -40,8 +41,8 @@ function AdminSettingsRoute() {
             ["Sensitive action review", "Required"],
           ].map(([label, value]) => (
             <KumoLayerCard key={label} className="rounded-xl p-4">
-              <p className="m-0 font-medium text-kumo-default text-sm">{label}</p>
-              <p className="m-0 mt-2 text-kumo-subtle text-sm">{value}</p>
+              <p className="text-kumo-default m-0 text-sm font-medium">{label}</p>
+              <p className="text-kumo-subtle m-0 mt-2 text-sm">{value}</p>
             </KumoLayerCard>
           ))}
         </div>

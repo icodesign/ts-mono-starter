@@ -1,6 +1,5 @@
-import { env } from "cloudflare:workers";
-
 import type { StudioConfig } from "better-auth-studio";
+import { env } from "cloudflare:workers";
 
 import { createAuth } from "./server/auth";
 

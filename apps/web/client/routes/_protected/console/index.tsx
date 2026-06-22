@@ -15,8 +15,8 @@ function ConsoleOverviewRoute() {
           ["Runs today", "128"],
         ].map(([label, value]) => (
           <KumoLayerCard key={label} className="rounded-xl p-4">
-            <p className="m-0 text-kumo-subtle text-sm">{label}</p>
-            <p className="m-0 mt-3 font-semibold text-3xl text-kumo-default tracking-normal">
+            <p className="text-kumo-subtle m-0 text-sm">{label}</p>
+            <p className="text-kumo-default m-0 mt-3 text-3xl font-semibold tracking-normal">
               {value}
             </p>
           </KumoLayerCard>
@@ -26,10 +26,10 @@ function ConsoleOverviewRoute() {
       <KumoLayerCard className="flex min-h-105 flex-1 items-center justify-center rounded-xl border-dashed p-6">
         <div className="max-w-sm text-center">
           <KumoBadge variant="secondary">overview</KumoBadge>
-          <h2 className="m-0 mt-4 font-semibold text-2xl text-kumo-default tracking-normal">
+          <h2 className="text-kumo-default m-0 mt-4 text-2xl font-semibold tracking-normal">
             Console workspace
           </h2>
-          <p className="m-0 mt-3 text-kumo-subtle text-sm leading-6">
+          <p className="text-kumo-subtle m-0 mt-3 text-sm leading-6">
             The right-side workspace is reserved for dashboards, tables, and operational tools.
           </p>
         </div>

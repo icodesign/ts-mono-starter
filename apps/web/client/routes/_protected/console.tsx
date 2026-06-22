@@ -2,6 +2,7 @@ import { GearSixIcon, HouseIcon, ListChecksIcon, RobotIcon } from "@phosphor-ico
 import { createFileRoute, Outlet, useRouterState } from "@tanstack/react-router";
 
 import { ConsoleShell, type ShellNavGroup } from "@/components/console-shell";
+
 import { Route as ProtectedRoute } from "../_protected";
 
 export const Route = createFileRoute("/_protected/console")({

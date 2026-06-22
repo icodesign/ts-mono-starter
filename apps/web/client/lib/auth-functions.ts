@@ -1,7 +1,7 @@
-import { env } from "cloudflare:workers";
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest, getRequestHeaders } from "@tanstack/react-start/server";
 import type { CloudflareGeolocation } from "better-auth-cloudflare";
+import { env } from "cloudflare:workers";
 
 import { createAuth } from "#/auth";
 

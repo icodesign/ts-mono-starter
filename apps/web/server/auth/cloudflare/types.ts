@@ -3,7 +3,7 @@ import type { AuthContext, Session, User } from "better-auth";
 import type { DBFieldAttribute } from "better-auth/db";
 import type { drizzle as d1Drizzle } from "drizzle-orm/d1";
 import type { drizzle as mysqlDrizzle } from "drizzle-orm/mysql2";
-import type { drizzle as postgresDrizzle } from "drizzle-orm/postgres-js";
+import type { drizzle as postgresDrizzle } from "drizzle-orm/node-postgres";
 
 export interface CloudflarePluginOptions {
   /**

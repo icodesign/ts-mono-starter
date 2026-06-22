@@ -1,5 +1,5 @@
-import { KumoButton } from "@workspace/ui";
 import { GearSixIcon, HouseIcon, ShieldCheckIcon, UsersThreeIcon } from "@phosphor-icons/react";
+import { KumoButton } from "@workspace/ui";
 import type { ReactNode } from "react";
 
 import { ConsoleShell, type ShellNavGroup } from "@/components/console-shell";

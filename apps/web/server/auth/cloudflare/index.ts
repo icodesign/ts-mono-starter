@@ -7,6 +7,7 @@ import type {
 } from "better-auth";
 import { createAuthEndpoint, getSessionFromCtx } from "better-auth/api";
 import type { SecondaryStorage } from "better-auth/db";
+
 import { createR2Endpoints, createR2Storage } from "./r2";
 import { schema } from "./schema";
 import type {
@@ -191,7 +192,7 @@ export const withCloudflare = <T extends BetterAuthOptions>(
   const updatedAdvanced = { ...options.advanced };
   if (autoDetectIpEnabled) {
     updatedAdvanced.ipAddress = {
-      ...(updatedAdvanced.ipAddress ?? {}),
+      ...updatedAdvanced.ipAddress,
       ipAddressHeaders: [
         "cf-connecting-ip",
         "x-real-ip",

@@ -1,0 +1,262 @@
+import { drizzleAdapter } from "@better-auth/drizzle-adapter";
+import type {
+  BetterAuthOptions,
+  BetterAuthPlugin,
+  GenericEndpointContext,
+  Session,
+} from "better-auth";
+import { createAuthEndpoint, getSessionFromCtx } from "better-auth/api";
+import type { SecondaryStorage } from "better-auth/db";
+
+import { createR2Endpoints, createR2Storage } from "./r2";
+import { schema } from "./schema";
+import type {
+  CloudflareGeolocation,
+  CloudflarePluginOptions,
+  WithCloudflareOptions,
+} from "./types";
+
+export * from "./client";
+export * from "./r2";
+export * from "./schema";
+export * from "./types";
+
+/**
+ * Cloudflare integration for Better Auth
+ *
+ * @param options - Plugin configuration options
+ * @returns Better Auth plugin for Cloudflare
+ */
+export const cloudflare = (options?: CloudflarePluginOptions) => {
+  const opts = options ?? {};
+
+  // Default geolocationTracking to true if not specified
+  const geolocationTrackingEnabled =
+    opts.geolocationTracking === undefined || opts.geolocationTracking;
+
+  let r2Storage: ReturnType<typeof createR2Storage> | null = null;
+
+  return {
+    id: "cloudflare",
+    schema: schema(opts),
+    endpoints: {
+      getGeolocation: createAuthEndpoint(
+        "/cloudflare/geolocation",
+        {
+          method: "GET",
+        },
+        async (ctx) => {
+          const session = await getSessionFromCtx(ctx);
+          if (!session) {
+            return ctx.json({ error: "Unauthorized" }, { status: 401 });
+          }
+
+          const cf = await Promise.resolve(opts.cf);
+          if (!cf) {
+            return ctx.json({ error: "Cloudflare context is not available" }, { status: 404 });
+          }
+
+          // Extract and validate Cloudflare geolocation data
+          const context = extractGeolocationData(cf);
+
+          return ctx.json(context);
+        },
+      ),
+      ...(opts.r2 ? createR2Endpoints(() => r2Storage, opts.r2) : {}),
+    },
+
+    init(init_ctx) {
+      if (opts.r2) {
+        r2Storage = createR2Storage(opts.r2, init_ctx.generateId);
+      }
+      return {
+        options: {
+          databaseHooks: {
+            session: {
+              create: {
+                before: async (
+                  s: Session & Record<string, unknown>,
+                  _context: GenericEndpointContext | null,
+                ) => {
+                  if (!geolocationTrackingEnabled) return;
+                  const cf = await Promise.resolve(opts.cf);
+                  if (!cf) return;
+                  const geoData = extractGeolocationData(cf);
+                  return {
+                    data: {
+                      ...s,
+                      ...geoData,
+                    },
+                  };
+                },
+              },
+            },
+          },
+        },
+      };
+    },
+  } satisfies BetterAuthPlugin;
+};
+
+/**
+ * Safely extracts CloudflareGeolocation data, ignoring undefined values or other fields
+ */
+function extractGeolocationData(input: CloudflareGeolocation): CloudflareGeolocation {
+  if (!input || typeof input !== "object") {
+    return {};
+  }
+
+  return {
+    timezone: input.timezone || undefined,
+    city: input.city || undefined,
+    country: input.country || undefined,
+    region: input.region || undefined,
+    regionCode: input.regionCode || undefined,
+    colo: input.colo || undefined,
+    latitude: input.latitude || undefined,
+    longitude: input.longitude || undefined,
+  };
+}
+
+/**
+ * Creates secondary storage using Cloudflare KV
+ *
+ * @param kv - Cloudflare KV namespace
+ * @returns SecondaryStorage implementation
+ */
+export const createKVStorage = (kv: KVNamespace): SecondaryStorage => {
+  return {
+    get: async (key: string) => {
+      return kv.get(key);
+    },
+    set: async (key: string, value: string, ttl?: number) => {
+      if (ttl !== undefined) {
+        // Cloudflare KV requires TTL >= 60 seconds
+        const minTtl = 60;
+        if (ttl < minTtl) {
+          console.warn(
+            `[BetterAuthCloudflare] TTL ${ttl}s is less than KV minimum of ${minTtl}s. Using ${minTtl}s instead.`,
+          );
+          ttl = minTtl;
+        }
+        return kv.put(key, value, { expirationTtl: ttl });
+      }
+      return kv.put(key, value);
+    },
+    delete: async (key: string) => {
+      return kv.delete(key);
+    },
+  };
+};
+
+type CloudflarePlugin = ReturnType<typeof cloudflare>;
+
+type MergedPlugins<T extends BetterAuthOptions> =
+  NonNullable<T["plugins"]> extends readonly [...infer P]
+    ? [CloudflarePlugin, ...P]
+    : [CloudflarePlugin];
+
+type WithCloudflareAuth<T extends BetterAuthOptions> = Omit<T, "plugins"> & {
+  plugins: MergedPlugins<T>;
+};
+
+/**
+ * Enhances BetterAuthOptions with Cloudflare-specific configurations.
+ *
+ * This function integrates Cloudflare services like D1 for database and KV for secondary storage,
+ * and sets up IP address detection and geolocation tracking based on the provided Cloudflare options.
+ *
+ * @param cloudFlareOptions - Options for configuring Cloudflare integration.
+ * @param options - The base BetterAuthOptions to be enhanced.
+ * @returns BetterAuthOptions configured for use with Cloudflare.
+ */
+export const withCloudflare = <T extends BetterAuthOptions>(
+  cloudFlareOptions: WithCloudflareOptions,
+  options: T,
+): WithCloudflareAuth<T> => {
+  const autoDetectIpEnabled =
+    cloudFlareOptions.autoDetectIpAddress === undefined ||
+    cloudFlareOptions.autoDetectIpAddress === true;
+  const geolocationTrackingForSession =
+    cloudFlareOptions.geolocationTracking === undefined ||
+    cloudFlareOptions.geolocationTracking === true;
+
+  if (autoDetectIpEnabled || geolocationTrackingForSession) {
+    if (!cloudFlareOptions.cf) {
+      throw new Error(
+        "Cloudflare context is required for geolocation or IP detection features. Be sure to pass the `cf` option to the withCloudflare function.",
+      );
+    }
+  }
+
+  const updatedAdvanced = { ...options.advanced };
+  if (autoDetectIpEnabled) {
+    updatedAdvanced.ipAddress = {
+      ...updatedAdvanced.ipAddress,
+      ipAddressHeaders: [
+        "cf-connecting-ip",
+        "x-real-ip",
+        ...(updatedAdvanced.ipAddress?.ipAddressHeaders ?? []),
+      ],
+    };
+  } else if (updatedAdvanced.ipAddress?.ipAddressHeaders) {
+    // If autoDetectIp is disabled, ensure our headers are not in the list if they were added by default elsewhere
+    // This part is tricky as we don't know if they were from the user or our default.
+    // A safer approach might be to just rely on the user to not list them if they disable this flag.
+    // For now, let's assume if autoDetectIpEnabled is false, the user manages headers explicitly.
+  }
+
+  const updatedSession = { ...options.session };
+  if (geolocationTrackingForSession) {
+    updatedSession.storeSessionInDatabase = true;
+  } else if (options.session?.storeSessionInDatabase === undefined) {
+    // If geolocationTracking is false, and the user hasn't set a preference for storeSessionInDatabase,
+    // it will remain undefined (i.e., Better Auth core default behavior).
+    // If user explicitly set it to true/false, that will be respected.
+  }
+
+  const dbConfigs = [
+    cloudFlareOptions.postgres,
+    cloudFlareOptions.mysql,
+    cloudFlareOptions.d1,
+    cloudFlareOptions.d1Native,
+  ].filter(Boolean);
+  if (dbConfigs.length > 1) {
+    throw new Error(
+      "Only one database configuration can be provided. Please provide only one of postgres, mysql, d1, or d1Native.",
+    );
+  }
+
+  let database: ReturnType<typeof drizzleAdapter> | D1Database | undefined;
+  if (cloudFlareOptions.d1Native) {
+    database = cloudFlareOptions.d1Native;
+  } else if (cloudFlareOptions.postgres) {
+    database = drizzleAdapter(cloudFlareOptions.postgres.db, {
+      provider: "pg",
+      ...cloudFlareOptions.postgres.options,
+    });
+  } else if (cloudFlareOptions.mysql) {
+    database = drizzleAdapter(cloudFlareOptions.mysql.db, {
+      provider: "mysql",
+      ...cloudFlareOptions.mysql.options,
+    });
+  } else if (cloudFlareOptions.d1) {
+    database = drizzleAdapter(cloudFlareOptions.d1.db, {
+      provider: "sqlite",
+      ...cloudFlareOptions.d1.options,
+    });
+  }
+
+  const plugins = [cloudflare(cloudFlareOptions), ...(options.plugins ?? [])] as MergedPlugins<T>;
+
+  return {
+    ...options,
+    database,
+    secondaryStorage: cloudFlareOptions.kv ? createKVStorage(cloudFlareOptions.kv) : undefined,
+    plugins,
+    advanced: updatedAdvanced,
+    session: updatedSession,
+  } as WithCloudflareAuth<T>;
+};
+
+export type SessionWithGeolocation = Session & CloudflareGeolocation;

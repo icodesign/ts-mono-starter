@@ -1,31 +1,48 @@
 {
-  "name": "example-project",
+  "name": "changeme",
   "private": true,
-  "devDependencies": {
-    "turbo": "latest",
-    "typescript": "^5.9.3"
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "vp dev",
+    "check": "vp check",
+    "test": "vp test",
+    "build": "vp build",
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "fmt:check": "vp fmt --check",
+    "auth:schema": "bun run --cwd apps/web auth:schema",
+    "infra:dev:up": "docker compose -f infra/dev/docker-compose.yml up -d",
+    "infra:dev:down": "docker compose -f infra/dev/docker-compose.yml down",
+    "infra:dev:logs": "docker compose -f infra/dev/docker-compose.yml logs -f",
+    "prepare": "vp config"
   },
-  "overrides": {
-    "drizzle-orm": "catalog:"
+  "devDependencies": {
+    "vite": "catalog:build",
+    "vite-plus": "catalog:build"
   },
   "engines": {
-    "node": ">=22"
+    "node": "24.x"
   },
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ],
-    "catalog": {
-      "react": "^19.2.0",
-      "react-dom": "^19.2.0",
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2",
-      "@types/node": "^22",
-      "drizzle-orm": "^0.44.7",
-      "zod": "^4.1.12",
-      "tailwindcss": "^4.1.16"
+  "packageManager": "bun@1.3.14",
+  "catalog": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "zod": "^4.4.3",
+    "drizzle-orm": "^0.45.2"
+  },
+  "catalogs": {
+    "build": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "4.1.9",
+      "vite-plus": "latest",
+      "@types/node": "24.x",
+      "typescript": "^6.0.3",
+      "wrangler": "^4.91.0"
     }
-  },
-  "packageManager": "bun@1.3.3"
+  }
 }

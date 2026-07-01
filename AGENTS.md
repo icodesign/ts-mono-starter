@@ -1,16 +1,20 @@
-<!--VITE PLUS START-->
+# Toolchain
 
-# Using Vite+, the Unified Toolchain for the Web
+This is a Bun workspaces monorepo (`apps/*`, `packages/*`). Linting and formatting run on
+[Oxlint](https://oxc.rs/docs/guide/usage/linter) and [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)
+directly — no wrapper CLI. Each package finds its nearest `.oxlintrc.json`/`.oxfmtrc.json` by walking
+up the directory tree, so `oxlint`/`oxfmt` give the same result whether run from the repo root or from
+inside a package.
 
-This project is using Vite+, a unified toolchain built on top of Vite, Rolldown, Vitest, tsdown, Oxlint, Oxfmt, and Vite Task. Vite+ wraps runtime management, package management, and frontend tooling in a single global CLI called `vp`. Vite+ is distinct from Vite, and it invokes Vite through `vp dev` and `vp build`. Run `vp help` to print a list of commands and `vp <command> --help` for information about a specific command.
-
-Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.dev/guide/.
+- `apps/web` is a TanStack Start app built with plain Vite (`vite`, `vite build`, `vite preview`).
+- `packages/database` and `packages/ui` are plain TypeScript libraries with no bundling — they ship raw
+  `.ts`/`.tsx` source via `exports`/`imports` maps and are typechecked with `tsc` (TypeScript 7, the
+  native compiler).
 
 ## Review Checklist
 
-- [ ] Run `vp install` after pulling remote changes and before getting started.
-- [ ] Run `vp check` and `vp test` to format, lint, type check and test changes.
-- [ ] Check if there are `vite.config.ts` tasks or `package.json` scripts necessary for validation, run via `vp run <script>`.
-- [ ] If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor` and include its output when asking for help.
-
-<!--VITE PLUS END-->
+- [ ] Run `bun install` after pulling remote changes.
+- [ ] Run `bun run check` at the repo root (lint + format check) before considering changes done.
+- [ ] Run `bun run --filter '*' --if-present check` (or `tsc -p tsconfig.json --noEmit` inside a
+      specific package) to catch type errors.
+- [ ] For `apps/web`-specific work, `cd apps/web && bun run dev` / `bun run build` drives the actual app.

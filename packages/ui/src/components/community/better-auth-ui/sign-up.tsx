@@ -40,6 +40,12 @@ export type SignUpProps = {
   socialPosition?: "top" | "bottom";
 };
 
+type AuthPluginSlots = {
+  captchaComponent?: ReactNode;
+  authButtons?: ComponentType<{ view: "signUp" }>[];
+  id: string;
+};
+
 /**
  * Renders a sign-up form with name, email, and password fields, optional social provider buttons, and submission handling.
  *
@@ -83,7 +89,7 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
     },
     onSuccess: () => {
       if (emailAndPassword?.requireEmailVerification) {
-        toast.success(localization.auth.verifyYourEmail);
+        toast.success(localization.auth.checkYourEmail);
         navigate({ to: `${basePaths.auth}/${viewPaths.auth.signIn}` });
       } else {
         navigate({ to: redirectTo });
@@ -99,7 +105,8 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
   });
   const isPending = signInMutating + signUpMutating > 0;
 
-  const Captcha = plugins.find((plugin) => plugin.captchaComponent)?.captchaComponent as ReactNode;
+  const authPlugins = plugins as AuthPluginSlots[];
+  const Captcha = authPlugins.find((plugin) => plugin.captchaComponent)?.captchaComponent;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
@@ -395,12 +402,10 @@ export function SignUp({ className, socialLayout, socialPosition = "bottom" }: S
                     {localization.auth.signUp}
                   </Button>
 
-                  {plugins.flatMap((plugin) =>
-                    ((plugin.authButtons ?? []) as ComponentType<{ view: "signUp" }>[]).map(
-                      (AuthButton, index) => (
-                        <AuthButton key={`${plugin.id}-${index.toString()}`} view="signUp" />
-                      ),
-                    ),
+                  {authPlugins.flatMap((plugin) =>
+                    (plugin.authButtons ?? []).map((AuthButton, index) => (
+                      <AuthButton key={`${plugin.id}-${index.toString()}`} view="signUp" />
+                    )),
                   )}
                 </div>
               </FieldGroup>

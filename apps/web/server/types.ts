@@ -1,10 +1,6 @@
-import type { createAuth } from "./auth";
-
-type ApiEnv = {
+export type AppEnv = {
   Bindings: Env;
   Variables: {
-    auth: ReturnType<typeof createAuth>;
+    clerkUserId: string | null;
   };
 };
-
-export type { ApiEnv };

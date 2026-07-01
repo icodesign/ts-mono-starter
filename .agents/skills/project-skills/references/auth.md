@@ -49,12 +49,12 @@ After auth changes, run:
 
 ```sh
 bun run auth:schema
-bun run --cwd apps/web typecheck
-bun run --cwd packages/database typecheck
+bun run --cwd apps/web check
+bun run --cwd packages/database check
 ```
 
 If generated Worker types or formatting-sensitive files changed, also run:
 
 ```sh
-bun run biome:check
+bun run fmt:check
 ```

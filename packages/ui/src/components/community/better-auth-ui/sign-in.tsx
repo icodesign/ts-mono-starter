@@ -38,6 +38,12 @@ export type SignInProps = {
   socialPosition?: "top" | "bottom";
 };
 
+type AuthPluginSlots = {
+  captchaComponent?: ReactNode;
+  authButtons?: ComponentType<{ view: "signIn" }>[];
+  id: string;
+};
+
 /**
  * Render the sign-in form UI with email/password, magic link, and social provider options.
  *
@@ -101,7 +107,8 @@ export function SignIn({ className, socialLayout, socialPosition = "bottom" }: S
   });
   const isPending = signInMutating + signUpMutating > 0;
 
-  const Captcha = plugins.find((plugin) => plugin.captchaComponent)?.captchaComponent as ReactNode;
+  const authPlugins = plugins as AuthPluginSlots[];
+  const Captcha = authPlugins.find((plugin) => plugin.captchaComponent)?.captchaComponent;
 
   const [fieldErrors, setFieldErrors] = useState<{
     email?: string;
@@ -238,12 +245,10 @@ export function SignIn({ className, socialLayout, socialPosition = "bottom" }: S
                     {localization.auth.signIn}
                   </Button>
 
-                  {plugins.flatMap((plugin) =>
-                    ((plugin.authButtons ?? []) as ComponentType<{ view: "signIn" }>[]).map(
-                      (AuthButton, index) => (
-                        <AuthButton key={`${plugin.id}-${index.toString()}`} view="signIn" />
-                      ),
-                    ),
+                  {authPlugins.flatMap((plugin) =>
+                    (plugin.authButtons ?? []).map((AuthButton, index) => (
+                      <AuthButton key={`${plugin.id}-${index.toString()}`} view="signIn" />
+                    )),
                   )}
                 </div>
               </FieldGroup>

@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["vite-plus/client", "node"],
+    "types": ["vite/client", "node"],
     "paths": {
       "@/*": ["./client/*"],
       "#/*": ["./server/*"],
@@ -15,7 +15,6 @@
     "server/**/*.ts",
     "shared/**/*.ts",
     "shared/**/*.tsx",
-    "studio.config.ts",
     "scripts/**/*.ts",
     "worker-configuration.d.ts"
   ]

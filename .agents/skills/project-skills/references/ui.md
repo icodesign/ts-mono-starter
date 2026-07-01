@@ -55,14 +55,14 @@ Base UI itself is installed as a foundation dependency. Custom Base UI wrappers 
 After UI component changes, run:
 
 ```sh
-bun run biome:check
-bun run --cwd apps/web typecheck
+bun run fmt:check
+bun run --cwd apps/web check
 ```
 
 If shared UI changed, also run:
 
 ```sh
-bun run --cwd packages/ui typecheck
+bun run --cwd packages/ui check
 ```
 
 For visible page changes, start the web dev server and verify the affected route in the browser.

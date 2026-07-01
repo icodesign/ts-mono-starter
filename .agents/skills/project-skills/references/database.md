@@ -56,12 +56,12 @@ bun run --cwd packages/database user:admin <email>
 After database package changes, run:
 
 ```sh
-bun run --cwd packages/database typecheck
-bun run --cwd apps/web typecheck
+bun run --cwd packages/database check
+bun run --cwd apps/web check
 ```
 
 If auth schema generation or migrations changed files, also run:
 
 ```sh
-bun run biome:check
+bun run fmt:check
 ```

@@ -12,16 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as SignUpRouteImport } from './routes/sign-up'
 import { Route as DebugComponentsRouteImport } from './routes/debug/components'
-import { Route as AuthPathRouteImport } from './routes/auth/$path'
 import { Route as ProtectedConsoleRouteImport } from './routes/_protected/console'
 import { Route as ProtectedConsoleIndexRouteImport } from './routes/_protected/console/index'
 import { Route as AdminAdminIndexRouteImport } from './routes/_admin/admin/index'
 import { Route as ProtectedConsoleSettingsRouteImport } from './routes/_protected/console/settings'
 import { Route as AdminAdminUsersRouteImport } from './routes/_admin/admin/users'
 import { Route as AdminAdminSettingsRouteImport } from './routes/_admin/admin/settings'
-import { Route as AdminAdminAuthRouteImport } from './routes/_admin/admin/auth'
-import { Route as AdminAdminAuthSplatRouteImport } from './routes/_admin/admin/auth/$'
 
 const ProtectedRoute = ProtectedRouteImport.update({
   id: '/_protected',
@@ -36,14 +35,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignUpRoute = SignUpRouteImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DebugComponentsRoute = DebugComponentsRouteImport.update({
   id: '/debug/components',
   path: '/debug/components',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthPathRoute = AuthPathRouteImport.update({
-  id: '/auth/$path',
-  path: '/auth/$path',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProtectedConsoleRoute = ProtectedConsoleRouteImport.update({
@@ -77,106 +81,91 @@ const AdminAdminSettingsRoute = AdminAdminSettingsRouteImport.update({
   path: '/admin/settings',
   getParentRoute: () => AdminRoute,
 } as any)
-const AdminAdminAuthRoute = AdminAdminAuthRouteImport.update({
-  id: '/admin/auth',
-  path: '/admin/auth',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminAdminAuthSplatRoute = AdminAdminAuthSplatRouteImport.update({
-  id: '/$',
-  path: '/$',
-  getParentRoute: () => AdminAdminAuthRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
   '/console': typeof ProtectedConsoleRouteWithChildren
-  '/auth/$path': typeof AuthPathRoute
   '/debug/components': typeof DebugComponentsRoute
-  '/admin/auth': typeof AdminAdminAuthRouteWithChildren
   '/admin/settings': typeof AdminAdminSettingsRoute
   '/admin/users': typeof AdminAdminUsersRoute
   '/console/settings': typeof ProtectedConsoleSettingsRoute
   '/admin/': typeof AdminAdminIndexRoute
   '/console/': typeof ProtectedConsoleIndexRoute
-  '/admin/auth/$': typeof AdminAdminAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth/$path': typeof AuthPathRoute
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
   '/debug/components': typeof DebugComponentsRoute
-  '/admin/auth': typeof AdminAdminAuthRouteWithChildren
   '/admin/settings': typeof AdminAdminSettingsRoute
   '/admin/users': typeof AdminAdminUsersRoute
   '/console/settings': typeof ProtectedConsoleSettingsRoute
   '/admin': typeof AdminAdminIndexRoute
   '/console': typeof ProtectedConsoleIndexRoute
-  '/admin/auth/$': typeof AdminAdminAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sign-in': typeof SignInRoute
+  '/sign-up': typeof SignUpRoute
   '/_admin': typeof AdminRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
   '/_protected/console': typeof ProtectedConsoleRouteWithChildren
-  '/auth/$path': typeof AuthPathRoute
   '/debug/components': typeof DebugComponentsRoute
-  '/_admin/admin/auth': typeof AdminAdminAuthRouteWithChildren
   '/_admin/admin/settings': typeof AdminAdminSettingsRoute
   '/_admin/admin/users': typeof AdminAdminUsersRoute
   '/_protected/console/settings': typeof ProtectedConsoleSettingsRoute
   '/_admin/admin/': typeof AdminAdminIndexRoute
   '/_protected/console/': typeof ProtectedConsoleIndexRoute
-  '/_admin/admin/auth/$': typeof AdminAdminAuthSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/sign-in'
+    | '/sign-up'
     | '/console'
-    | '/auth/$path'
     | '/debug/components'
-    | '/admin/auth'
     | '/admin/settings'
     | '/admin/users'
     | '/console/settings'
     | '/admin/'
     | '/console/'
-    | '/admin/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/auth/$path'
+    | '/sign-in'
+    | '/sign-up'
     | '/debug/components'
-    | '/admin/auth'
     | '/admin/settings'
     | '/admin/users'
     | '/console/settings'
     | '/admin'
     | '/console'
-    | '/admin/auth/$'
   id:
     | '__root__'
     | '/'
+    | '/sign-in'
+    | '/sign-up'
     | '/_admin'
     | '/_protected'
     | '/_protected/console'
-    | '/auth/$path'
     | '/debug/components'
-    | '/_admin/admin/auth'
     | '/_admin/admin/settings'
     | '/_admin/admin/users'
     | '/_protected/console/settings'
     | '/_admin/admin/'
     | '/_protected/console/'
-    | '/_admin/admin/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SignInRoute: typeof SignInRoute
+  SignUpRoute: typeof SignUpRoute
   AdminRoute: typeof AdminRouteWithChildren
   ProtectedRoute: typeof ProtectedRouteWithChildren
-  AuthPathRoute: typeof AuthPathRoute
   DebugComponentsRoute: typeof DebugComponentsRoute
 }
 
@@ -203,18 +192,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-up': {
+      id: '/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/debug/components': {
       id: '/debug/components'
       path: '/debug/components'
       fullPath: '/debug/components'
       preLoaderRoute: typeof DebugComponentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/$path': {
-      id: '/auth/$path'
-      path: '/auth/$path'
-      fullPath: '/auth/$path'
-      preLoaderRoute: typeof AuthPathRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_protected/console': {
@@ -259,44 +255,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminSettingsRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/_admin/admin/auth': {
-      id: '/_admin/admin/auth'
-      path: '/admin/auth'
-      fullPath: '/admin/auth'
-      preLoaderRoute: typeof AdminAdminAuthRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/_admin/admin/auth/$': {
-      id: '/_admin/admin/auth/$'
-      path: '/$'
-      fullPath: '/admin/auth/$'
-      preLoaderRoute: typeof AdminAdminAuthSplatRouteImport
-      parentRoute: typeof AdminAdminAuthRoute
-    }
   }
 }
 
-interface AdminAdminAuthRouteChildren {
-  AdminAdminAuthSplatRoute: typeof AdminAdminAuthSplatRoute
-}
-
-const AdminAdminAuthRouteChildren: AdminAdminAuthRouteChildren = {
-  AdminAdminAuthSplatRoute: AdminAdminAuthSplatRoute,
-}
-
-const AdminAdminAuthRouteWithChildren = AdminAdminAuthRoute._addFileChildren(
-  AdminAdminAuthRouteChildren,
-)
-
 interface AdminRouteChildren {
-  AdminAdminAuthRoute: typeof AdminAdminAuthRouteWithChildren
   AdminAdminSettingsRoute: typeof AdminAdminSettingsRoute
   AdminAdminUsersRoute: typeof AdminAdminUsersRoute
   AdminAdminIndexRoute: typeof AdminAdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
-  AdminAdminAuthRoute: AdminAdminAuthRouteWithChildren,
   AdminAdminSettingsRoute: AdminAdminSettingsRoute,
   AdminAdminUsersRoute: AdminAdminUsersRoute,
   AdminAdminIndexRoute: AdminAdminIndexRoute,
@@ -331,9 +299,10 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SignInRoute: SignInRoute,
+  SignUpRoute: SignUpRoute,
   AdminRoute: AdminRouteWithChildren,
   ProtectedRoute: ProtectedRouteWithChildren,
-  AuthPathRoute: AuthPathRoute,
   DebugComponentsRoute: DebugComponentsRoute,
 }
 export const routeTree = rootRouteImport

@@ -32,8 +32,8 @@ Use this skill for project-specific CozyDevs conventions. Load only the referenc
 Use the narrowest validation that covers the changed surface:
 
 ```sh
-bun run biome:check
-bun run --cwd apps/web typecheck
+bun run fmt:check
+bun run --cwd apps/web check
 ```
 
 Add package-specific validation from the relevant reference file when shared UI, database, auth config, or generated types changed.

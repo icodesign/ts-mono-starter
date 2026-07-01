@@ -5,23 +5,27 @@
     "apps/*",
     "packages/*"
   ],
+  "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "check": "vp check",
-    "test": "vp test",
-    "build": "vp build",
-    "lint": "vp lint",
-    "fmt": "vp fmt",
-    "fmt:check": "vp fmt --check",
+    "dev": "bun run --elide-lines 0 --filter '*' --if-present --parallel dev",
+    "build": "bun run --elide-lines 0 --filter '*' --if-present build",
+    "typecheck": "bun run --elide-lines 0 --filter '*' --if-present typecheck",
+    "check": "bun run lint && bun run fmt:check",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "fmt": "oxfmt --write .",
+    "fmt:check": "oxfmt --check .",
+    "test": "bun test",
     "auth:schema": "bun run --cwd apps/web auth:schema",
     "infra:dev:up": "docker compose -f infra/dev/docker-compose.yml up -d",
     "infra:dev:down": "docker compose -f infra/dev/docker-compose.yml down",
-    "infra:dev:logs": "docker compose -f infra/dev/docker-compose.yml logs -f",
-    "prepare": "vp config"
+    "infra:dev:logs": "docker compose -f infra/dev/docker-compose.yml logs -f"
   },
   "devDependencies": {
-    "vite": "catalog:build",
-    "vite-plus": "catalog:build"
+    "oxfmt": "catalog:build",
+    "oxlint": "catalog:build",
+    "oxlint-tsgolint": "^0.23.0",
+    "typescript": "catalog:build"
   },
   "engines": {
     "node": "24.x"
@@ -37,11 +41,11 @@
   },
   "catalogs": {
     "build": {
-      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-      "vitest": "4.1.9",
-      "vite-plus": "latest",
+      "vite": "^8.1.0",
+      "oxlint": "^1.71.0",
+      "oxfmt": "^0.56.0",
       "@types/node": "24.x",
-      "typescript": "^6.0.3",
+      "typescript": "rc",
       "wrangler": "^4.91.0"
     }
   }

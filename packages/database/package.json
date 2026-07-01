@@ -17,7 +17,7 @@
     "user:admin": "bun scripts/set-admin.ts"
   },
   "dependencies": {
-    "drizzle-orm": "^0.45.1",
+    "drizzle-orm": "catalog:",
     "pg": "^8.21.0"
   },
   "devDependencies": {

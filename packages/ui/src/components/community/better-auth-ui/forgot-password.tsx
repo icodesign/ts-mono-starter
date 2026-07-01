@@ -25,6 +25,10 @@ export type ForgotPasswordProps = {
   className?: string;
 };
 
+type AuthPluginSlots = {
+  captchaComponent?: ReactNode;
+};
+
 /**
  * Render a card-based "Forgot Password" form that sends a password-reset email.
  *
@@ -56,7 +60,9 @@ export function ForgotPassword({ className }: ForgotPasswordProps) {
     });
   }
 
-  const Captcha = plugins.find((plugin) => plugin.captchaComponent)?.captchaComponent as ReactNode;
+  const Captcha = (plugins as AuthPluginSlots[]).find(
+    (plugin) => plugin.captchaComponent,
+  )?.captchaComponent;
 
   const [fieldErrors, setFieldErrors] = useState<{
     email?: string;

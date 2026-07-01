@@ -1,13 +1,9 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-import { getAdminSession } from "../lib/auth-functions";
+import { getAdminSession } from "../functions/auth.functions";
 
 export const Route = createFileRoute("/_admin")({
   beforeLoad: async ({ location }) => {
-    if (isAdminAuthEntry(location.pathname)) {
-      return { adminUser: null };
-    }
-
     const authState = await getAdminSession();
 
     if (authState.status === "authenticated") {
@@ -19,18 +15,8 @@ export const Route = createFileRoute("/_admin")({
     }
 
     throw redirect({
-      href: `/auth/sign-in?redirectTo=${encodeURIComponent(getAdminRedirectTarget(location))}`,
+      href: `/sign-in?redirectTo=${encodeURIComponent(location.href)}`,
     });
   },
   component: () => <Outlet />,
 });
-
-function isAdminAuthEntry(pathname: string) {
-  return (
-    pathname === "/admin/auth" || pathname === "/admin/auth/" || pathname === "/admin/auth/login"
-  );
-}
-
-function getAdminRedirectTarget(location: { href: string; pathname: string }) {
-  return location.href;
-}
